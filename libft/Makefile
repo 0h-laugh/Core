@@ -6,7 +6,7 @@
 #    By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 15:05:33 by ojastrze          #+#    #+#              #
-#    Updated: 2024/03/09 12:22:53 by ojastrze         ###   ########.fr        #
+#    Updated: 2024/03/09 16:50:48 by ojastrze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,19 @@ SRCS	=	ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 
+BSRCS	= 	ft_lstnew.c \
+		ft_lstadd_front.c\
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+
 OBJS	= $(SRCS:.c=.o)
+
+BOBJS	= $(BSRCS:.c=.o)
 
 HEADER = ./
 
@@ -83,7 +95,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BOBJS)
 	@clear
 	@echo "Objects threw away!"
 
@@ -95,4 +107,7 @@ fclean: clean
 re: fclean all
 	@echo "Library redone!"
 
-.PHONY: all, clean, fclean, re
+bonus: $(NAME) $(BOBJS)
+	@ar rc $(NAME) $(BOBJS)
+
+.PHONY: all, clean, fclean, re, bonus
