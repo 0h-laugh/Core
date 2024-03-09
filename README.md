@@ -1,2 +1,2 @@
-# Core
-42 Warsaw Common Core 
+# 42 Warsaw Common Core 
+
