@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:19:35 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/09 14:16:56 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:01:12 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_wordcount(const char *s, char c)
 	count = 0;
 	while (*s)
 	{
-		if (*s != c && count == 0)
+		if (*s != c && !count)
 		{
 			count = 1;
 			i++;
@@ -33,43 +33,43 @@ static int	ft_wordcount(const char *s, char c)
 	return (i);
 }
 
-static char	*ft_fill(const char *str, int start, char end)
+static void	ft_free(char **s)
 {
-	char	*word;
-	int		i;
+	int	i;
 
 	i = 0;
-	word = malloc((end - start + 1) * sizeof(char));
-	while (start < end)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
 }
 
 char	**ft_split(const char *s, char c)
 {
+	int		n;
 	int		i;
-	int		j;
-	int		k;
+	char	*start;
 	char	**dest;
 
-	dest = malloc((ft_wordcount(s, c) + 1) * sizeof(char *));
-	if (!dest || !s)
-		return (NULL);
 	i = 0;
-	j = 0;
-	k = -1;
-	while (i <= ft_strlen(s))
+	n = ft_wordcount(s, c);
+	dest = (char **)malloc((ft_wordcount(s, c) + 1) * sizeof(char *));
+	if (!dest)
+		return (NULL);
+	while (i < n)
 	{
-		if (s[i] != c && k < 0)
-			k = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && k >= 0)
-		{
-			dest[j++] = ft_fill(s, k, i);
-			k = -1;
-		}
+		while (*s == c)
+			s++;
+		start = (char *)s;
+		while (*s && *s != c)
+			s++;
+		dest[i] = ft_substr(start, 0, s - start);
+		if (!dest[i])
+			return (ft_free(dest), NULL);
 		i++;
 	}
-	dest[j] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }

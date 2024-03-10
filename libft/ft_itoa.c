@@ -59,3 +59,29 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int test_cases[] = { -123, 0, 123 };
+    int num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
+
+    for (int i = 0; i < num_tests; i++)
+    {
+        int n = test_cases[i];
+        char *str = ft_itoa(n);
+        if (str)
+        {
+            printf("ft_itoa(%d) = %s\n", n, str);
+            free(str);
+        }
+        else
+        {
+            printf("ft_itoa(%d) returned NULL\n", n);
+        }
+    }
+
+    return 0;
+}*/

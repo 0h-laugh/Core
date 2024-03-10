@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:07:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/08 17:45:26 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:17:30 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 0;
-	if (little[0] == '\0' || len == 0)
+	if (little[0] == '\0')
 		return ((char *)big);
 	if (big == NULL || little == NULL)
 		return (NULL);

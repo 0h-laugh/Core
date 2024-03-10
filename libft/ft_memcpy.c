@@ -28,3 +28,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main()
+{
+	char dest[10];
+	const void *src = "aaaaa";
+	memcpy(dest, src, 9);
+	printf("%s\n", dest);
+	return (0);
+}*/

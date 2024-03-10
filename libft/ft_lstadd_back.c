@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:40:44 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/09 16:43:56 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:18:02 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (!new)
 		return ;
-	if (!last)
+	if (!*lst)
 	{
 		*lst = new;
 		return ;
