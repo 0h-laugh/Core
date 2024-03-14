@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:19:35 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/10 20:01:12 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:20:49 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ char	**ft_split(const char *s, char c)
 			return (ft_free(dest), NULL);
 		i++;
 	}
-	dest[i] = '\0';
+	dest[i] = NULL;
 	return (dest);
 }
