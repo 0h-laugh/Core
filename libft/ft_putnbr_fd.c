@@ -34,27 +34,3 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(n + '0', fd);
 }
-/*
-#include "libft.h"
-#include <unistd.h>
-
-int main(void)
-{
-    int min_int = -214748;
-    int max_int = 2147483647;
-    int zero = 0;
-
-    // Test dla minimalnej wartości int
-    ft_putnbr_fd(min_int, 1); // Przekierowanie wyjścia na standardowe wyjście
-    ft_putchar_fd('\n', 1); // Nowa linia dla czytelności
-
-    // Test dla maksymalnej wartości int
-    ft_putnbr_fd(max_int, 1);
-    ft_putchar_fd('\n', 1);
-
-    // Test dla zera
-    ft_putnbr_fd(zero, 1);
-    ft_putchar_fd('\n', 1);
-
-    return (0);
-}*/
