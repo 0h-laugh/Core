@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:57:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/19 17:05:50 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/01 17:55:31 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/04 19:57:33 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	size_t	i;
 
 	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
-		return (NULL);
-	while (i < nmemb * size)
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		tmp[i] = 0;
+		if ((unsigned char) s1[i] != (unsigned char) s2[i])
+			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 		i++;
 	}
-	return (tmp);
+	return (0);
 }

@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:57:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/19 17:05:50 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/02/29 15:25:56 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/07 16:11:58 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	char	*temp;
 
-	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
-		return (NULL);
-	while (i < nmemb * size)
+	temp = (char *) s;
+	while (n > 0)
 	{
-		tmp[i] = 0;
-		i++;
+		*(temp++) = 0;
+		n--;
 	}
-	return (tmp);
 }
+/*
+#include <stdio.h>
+#include <strings.h>
+
+int	main()
+{
+	char test[11] = "aaaaaaaaaa";
+	ft_bzero(test, 1);
+	printf("%s\n", test);
+	char test2[11] = "aaaaaaaaaa";
+	bzero(test2, 1);
+	printf("%s\n", test2);
+	return (0);
+}*/

@@ -6,13 +6,9 @@
 #    By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 15:05:33 by ojastrze          #+#    #+#              #
-#    Updated: 2024/03/09 16:50:48 by ojastrze         ###   ########.fr        #
+#    Updated: 2024/03/15 14:52:58 by ojastrze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-FULL_SQUARE = █
-
-EMPTY_SQUARE = ░
 
 NAME	= libft.a
 
@@ -65,7 +61,7 @@ OBJS	= $(SRCS:.c=.o)
 
 BOBJS	= $(BSRCS:.c=.o)
 
-HEADER = ./
+HEADER	= ./
 
 CC	= cc
 
@@ -75,37 +71,18 @@ FLAGS	= -Wall -Wextra -Werror
 	@$(CC) $(CFLAGS) -I $(HEADER) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@echo "Compiling libft:"
-	@sleep 0.1 && clear && echo "$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(EMPTY_SQUARE)"
-	@sleep 0.1 && clear && echo "$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)$(FULL_SQUARE)"
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@clear
-	@echo "Success!"
 
 all: $(NAME)
 
 clean:
 	rm -f $(OBJS) $(BOBJS)
-	@clear
-	@echo "Objects threw away!"
 
 fclean: clean
 	rm -f $(NAME)
-	@clear
-	@echo "Library clean!"
 
 re: fclean all
-	@echo "Library redone!"
 
 bonus: $(NAME) $(BOBJS)
 	@ar rc $(NAME) $(BOBJS)

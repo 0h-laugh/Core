@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:57:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/19 17:05:50 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/04 18:02:41 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/07 12:04:34 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	char	*dest;
+	size_t	i;
 
 	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
+	dest = (char *) malloc(ft_strlen((char *) s) + 1);
+	if (!dest)
 		return (NULL);
-	while (i < nmemb * size)
+	while (s[i])
 	{
-		tmp[i] = 0;
+		dest[i] = s[i];
 		i++;
 	}
-	return (tmp);
+	dest[i] = 0;
+	return (dest);
 }

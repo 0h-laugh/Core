@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:57:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/19 17:05:50 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/04 16:21:30 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/07 12:01:51 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_atoi(const char *nptr)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	int	i;
+	int	sign;
+	int	res;
 
+	res = 0;
+	sign = 1;
 	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
-		return (NULL);
-	while (i < nmemb * size)
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' && nptr[i + 1] != '-')
+		i++;
+	if (nptr[i] == '-')
 	{
-		tmp[i] = 0;
+		sign = -1;
 		i++;
 	}
-	return (tmp);
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+	{
+		res *= 10;
+		res += nptr[i] - 48;
+		i++;
+	}
+	res *= sign;
+	return (res);
 }

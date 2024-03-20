@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:57:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/19 17:05:50 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/04 18:38:53 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/04 18:49:58 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	size_t	i;
+	char	*str;
 
-	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
+	if (!s)
 		return (NULL);
-	while (i < nmemb * size)
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len)
 	{
-		tmp[i] = 0;
+		str[i] = s[start + i];
 		i++;
 	}
-	return (tmp);
+	return (str);
 }

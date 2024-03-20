@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 17:57:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/19 17:05:50 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/04 16:07:02 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/09 23:17:30 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
+	j = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	if (big == NULL || little == NULL)
 		return (NULL);
-	while (i < nmemb * size)
+	while (big[i] && i < len)
 	{
-		tmp[i] = 0;
+		while (big[i + j] == little[j] && big[i + j] && i + j < len)
+		{
+			j++;
+			if (little[j] == 0)
+				return ((char *) big + i);
+		}
 		i++;
+		j = 0;
 	}
-	return (tmp);
+	return (0);
 }
