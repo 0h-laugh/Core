@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 15:25:56 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 16:11:58 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/21 19:06:05 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/21 19:06:18 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_print_char(char c, int *len)
 {
-	char	*temp;
-
-	temp = (char *) s;
-	while (n > 0)
-	{
-		*(temp++) = 0;
-		n--;
-	}
+	write(1, &c, 1);
+	(*len)++;
 }
-/*
-#include <stdio.h>
-#include <strings.h>
-
-int	main()
-{
-	char test[11] = "aaaaaaaaaa";
-	ft_bzero(test, 1);
-	printf("%s\n", test);
-	char test2[11] = "aaaaaaaaaa";
-	bzero(test2, 1);
-	printf("%s\n", test2);
-	return (0);
-}*/

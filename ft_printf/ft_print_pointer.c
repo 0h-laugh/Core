@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 15:25:56 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 16:11:58 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/21 19:03:39 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/21 19:59:52 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_print_pointer(size_t pointer, int *len)
 {
-	char	*temp;
+	char	string[25];
+	char	*base_char;
+	int		i;
 
-	temp = (char *) s;
-	while (n > 0)
+	i = 0;
+	base_char = "0123456789abcdef";
+	write(1, "0x", 2);
+	(*len) += 2;
+	if (pointer == 0)
 	{
-		*(temp++) = 0;
-		n--;
+		ft_print_string("(nill)", len);
+		return ;
 	}
+	while (pointer != 0)
+	{
+		string[i] = base_char[pointer % 16];
+		pointer = pointer / 16;
+		i++;
+	}
+	while (i--)
+		ft_print_char(string[i], len);
 }
-/*
-#include <stdio.h>
-#include <strings.h>
-
-int	main()
-{
-	char test[11] = "aaaaaaaaaa";
-	ft_bzero(test, 1);
-	printf("%s\n", test);
-	char test2[11] = "aaaaaaaaaa";
-	bzero(test2, 1);
-	printf("%s\n", test2);
-	return (0);
-}*/

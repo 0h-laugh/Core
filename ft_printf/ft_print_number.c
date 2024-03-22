@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_print_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 15:25:56 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 16:11:58 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/21 18:59:16 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/21 19:00:16 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_print_number(int number, int *len)
 {
-	char	*temp;
-
-	temp = (char *) s;
-	while (n > 0)
+	if (number == -2147483648)
 	{
-		*(temp++) = 0;
-		n--;
+		write(1, "-2147483648", 11);
+		(*len) += 11;
+		return ;
+	}
+	else if (number < 0)
+	{
+		ft_print_char('-', len);
+		ft_print_number(-number, len);
+	}
+	else
+	{
+		if (number > 9)
+			ft_print_number(number / 10, len);
+		ft_print_char(number % 10 + '0', len);
 	}
 }
-/*
-#include <stdio.h>
-#include <strings.h>
-
-int	main()
-{
-	char test[11] = "aaaaaaaaaa";
-	ft_bzero(test, 1);
-	printf("%s\n", test);
-	char test2[11] = "aaaaaaaaaa";
-	bzero(test2, 1);
-	printf("%s\n", test2);
-	return (0);
-}*/

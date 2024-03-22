@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 15:25:56 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 16:11:58 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/03/21 18:55:13 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/03/21 19:07:04 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_print_string(char *args, int *len)
 {
-	char	*temp;
+	size_t	i;
 
-	temp = (char *) s;
-	while (n > 0)
+	i = 0;
+	if (!args)
 	{
-		*(temp++) = 0;
-		n--;
+		write(1, "(null)", 6);
+		(*len) += 6;
+		return ;
+	}
+	while (args[i] != '\0')
+	{
+		ft_print_char(args[i], len);
+		i++;
 	}
 }
-/*
-#include <stdio.h>
-#include <strings.h>
-
-int	main()
-{
-	char test[11] = "aaaaaaaaaa";
-	ft_bzero(test, 1);
-	printf("%s\n", test);
-	char test2[11] = "aaaaaaaaaa";
-	bzero(test2, 1);
-	printf("%s\n", test2);
-	return (0);
-}*/
