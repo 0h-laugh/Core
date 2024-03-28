@@ -1,3 +1,8 @@
-# 42 Warsaw Common Core 
-<a href="https://github.com/0h-laugh/Core/tree/main/libft"><img src="https://img.shields.io/badge/LIBFT-Repository-brightgreen" alt="LIBFT Repository"></a>
-</br><a href="https://github.com/0h-laugh/Core/tree/main/ft_printf"><img src="https://img.shields.io/badge/FT_PRINTF-Repository-brightgreen" alt="FT_PRINTF Repository"></a>
+<div align="center">
+
+# <p align="center">42 Common Core:</p>
+
+[![Libft](https://img.shields.io/badge/Libft-Repository-blue)](https://github.com/0h-laugh/Core/tree/main/libft)
+[![FT_Printf](https://img.shields.io/badge/FT_Printf-Repository-green)](https://github.com/0h-laugh/Core/tree/main/ft_printf)
+
+</div>
