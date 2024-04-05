@@ -6,91 +6,66 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:01 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/05 15:57:03 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:16:17 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_check(const char *s)
+size_t	ft_strlen(char *s)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
-	while (s[i])
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i] != '\0')
 	{
-		if (s[i] == '\n')
-			return (1);
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
 		i++;
 	}
 	return (0);
 }
 
-size_t	ft_strlen(const char *s)
+char	*ft_strjoin(char *line, char *buffer)
 {
-	size_t	c;
-
-	c = 0;
-	while (s[c])
-		c++;
-	return (c);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
-{
-	char	*res;
-	int		len_s1;
-	int		len_s2;
-	int		i;
-	int		j;
-
-	len_s1 = ft_strlen((char *) s1);
-	len_s2 = ft_strlen((char *) s2);
-	i = 0;
-	j = 0;
-	res = (char *) malloc((len_s1 + len_s2 + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
-	while (s1[i])
-		res[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		res[j++] = s2[i++];
-	res[j] = 0;
-	return (res);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*dest;
 	size_t	i;
+	size_t	j;
+	char	*str;
 
-	i = 0;
-	dest = (char *) malloc(ft_strlen((char *) s) + 1);
-	if (!dest)
-		return (NULL);
-	while (s[i])
+	if (!line)
 	{
-		dest[i] = s[i];
-		i++;
+		line = (char *)malloc(1 * sizeof(char));
+		line[0] = '\0';
 	}
-	dest[i] = 0;
-	return (dest);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	unsigned char	*tmp;
-	size_t			i;
-
-	i = 0;
-	tmp = malloc(nmemb * size);
-	if (!tmp)
+	if (!line || !buffer)
 		return (NULL);
-	while (i < nmemb * size)
-	{
-		tmp[i] = 0;
-		i++;
-	}
-	return (tmp);
+	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buffer)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (line)
+		while (line[++i] != '\0')
+			str[i] = line[i];
+	while (buffer[j] != '\0')
+		str[i++] = buffer[j++];
+	str[ft_strlen(line) + ft_strlen(buffer)] = '\0';
+	free(line);
+	return (str);
 }

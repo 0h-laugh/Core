@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:43:38 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/28 18:18:32 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:29:56 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@
 #  define MAX_FD 1024
 # endif
 
+//main function
 char	*get_next_line(int fd);
+
+//main utils
+char	*ft_read(int fd, char *line);
+char	*ft_get_line(char *line);
+char	*ft_new_line(char *line);
+
+//utils
+size_t	ft_strlen(char *s);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *line, char *buffer);
 
 #endif

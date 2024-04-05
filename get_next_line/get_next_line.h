@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:43:38 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/05 15:56:59 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:16:22 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@
 char	*get_next_line(int fd);
 
 //main utils
-void	ft_free(char **str, char **str2, char **str3);
-char	*get_before_newline(const char *s);
-char	*get_after_newline(const char *s);
-void	ft_read(int fd, char **next, char **temp);
+char	*ft_read(int fd, char *line);
+char	*ft_get_line(char *line);
+char	*ft_new_line(char *line);
 
 //utils
-int	ft_check(const char *s);
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(const char *s1, const char *s2);
-char	*ft_strdup(const char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_strlen(char *s);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *line, char *buffer);
 
 #endif
