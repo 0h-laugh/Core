@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/13 00:55:17 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/04/13 00:35:47 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/04/13 01:31:19 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int main(int ac, char **av)
+int	check_input(int ac, char **av, t_stack *stack_a)
 {
-	//Declare and initalize stack
-	t_stack stack_a;
-	t_stack stack_b;
-	int 	size;
+	int	i;
 
-	stack_a.top = NULL;
-	stack_b.top = NULL;
-
-	//take input and put it into stack
-	fill_stack(ac, av, &stack_a);
-
-	//Sort
-
-	//Temporary print
-	t_node *current = stack_a.top;
-	while (current != NULL)
+	i = 0;
+	if (av[1][0] == '\0')
+		return (0);
+	while (av[1][i] != '\0')
 	{
-		printf("%d\n", current->data);
-		current = current->next;
+
 	}
-	//Output of instructions/stack
-	return (0);
 }
