@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/12 00:22:12 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:11:38 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,14 @@ typedef struct s_stack
 	int		size;
 	t_node	*top;
 }		t_stack;
+
+//main funtions
+
+
+//stack funtions
+void	fill_stack(int ac, char **av, t_stack *stack_a);
+
+//stack utility
+void	create_node(t_stack *stack, int value);
 
 #endif
