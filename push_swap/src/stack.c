@@ -14,7 +14,7 @@
 
 void	create_node(t_stack *stack, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)

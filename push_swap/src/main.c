@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/16 13:56:25 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:16:05 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int main(int ac, char **av)
 	fill_stack(ac, av, &stack_a);
 
 	//Sort
-
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	reverse_rotate_ab(&stack_a, &stack_b);
 	//Temporary print
 	t_node *current_a = stack_a.top;
 	t_node *current_b = stack_b.top;

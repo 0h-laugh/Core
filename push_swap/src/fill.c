@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 22:07:11 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/12 22:18:08 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:21:41 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	fill_stack(int ac, char **av, t_stack *stack_a)
 {
-	int i;
-	int value;
+	int	i;
+	int	value;
 
 	i = 1;
 	if (ac < 2)

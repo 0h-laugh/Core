@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 00:35:47 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/13 01:31:19 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:22:25 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ int	check_input(int ac, char **av, t_stack *stack_a)
 		return (0);
 	while (av[1][i] != '\0')
 	{
-
 	}
 }

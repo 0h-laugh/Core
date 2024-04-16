@@ -40,4 +40,24 @@ void	fill_stack(int ac, char **av, t_stack *stack_a);
 //stack utility
 void	create_node(t_stack *stack, int value);
 
+//stack operations
+//swaps
+void	swap_a(t_stack *stack_a);
+void	swap_b(t_stack *stack_b);
+void	swap_ab(t_stack *stack_a, t_stack *stack_b);
+
+//pushes
+void	push_a(t_stack *stack_a, t_stack *stack_b);
+void	push_b(t_stack *stack_a, t_stack *stack_b);
+
+//rotates
+void	rotate_a(t_stack *stack_a);
+void	rotate_b(t_stack *stack_b);
+void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
+
+//reverse rotates
+void	reverse_rotate_a(t_stack *stack_a);
+void	reverse_rotate_b(t_stack *stack_b);
+void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b);
+
 #endif

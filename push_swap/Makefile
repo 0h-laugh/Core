@@ -6,7 +6,7 @@
 #    By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 23:35:56 by ojastrze          #+#    #+#              #
-#    Updated: 2024/04/16 12:40:04 by ojastrze         ###   ########.fr        #
+#    Updated: 2024/04/16 15:56:46 by ojastrze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,10 @@ HDRDIR	= ./inc/
 SRCS	= $(SRCDIR)stack.c\
 	  $(SRCDIR)main.c\
 	  $(SRCDIR)fill.c\
+	  $(SRCDIR)swap.c\
+	  $(SRCDIR)push.c\
+	  $(SRCDIR)rotate.c\
+	  $(SRCDIR)reverse_rotate.c\
 
 OBJS	= $(SRCS:.c=.o)
 
