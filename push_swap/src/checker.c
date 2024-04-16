@@ -12,14 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-int	check_input(int ac, char **av, t_stack *stack_a)
+int	check_input(char **av)
 {
-	int	i;
 
-	i = 0;
-	if (av[1][0] == '\0')
-		return (0);
-	while (av[1][i] != '\0')
-	{
-	}
 }
