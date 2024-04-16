@@ -6,7 +6,7 @@
 #    By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 23:35:56 by ojastrze          #+#    #+#              #
-#    Updated: 2024/04/15 17:17:15 by ojastrze         ###   ########.fr        #
+#    Updated: 2024/04/16 12:40:04 by ojastrze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,19 @@ SRCDIR	= ./src/
 
 HDRDIR	= ./inc/
 
-SRCS	= stack.c\
-	  main.c\
-	  fill.c\
-	  checker.c\
+SRCS	= $(SRCDIR)stack.c\
+	  $(SRCDIR)main.c\
+	  $(SRCDIR)fill.c\
 
-OBJS	= $(SRCS:$(SRCDIR)%.c=$(SRCDIR)%.o)
+OBJS	= $(SRCS:.c=.o)
 
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(SRCDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 		@rm -f $(OBJS)

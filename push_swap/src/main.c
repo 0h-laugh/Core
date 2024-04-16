@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/13 00:55:17 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:56:25 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int main(int ac, char **av)
 	//Declare and initalize stack
 	t_stack stack_a;
 	t_stack stack_b;
-	int 	size;
 
 	stack_a.top = NULL;
 	stack_b.top = NULL;
@@ -28,12 +27,25 @@ int main(int ac, char **av)
 	//Sort
 
 	//Temporary print
-	t_node *current = stack_a.top;
-	while (current != NULL)
+	t_node *current_a = stack_a.top;
+	t_node *current_b = stack_b.top;
+	while (current_a != NULL || current_b != NULL)
 	{
-		printf("%d\n", current->data);
-		current = current->next;
+		if (current_a != NULL)
+		{
+			printf("%d", current_a->data);
+			current_a = current_a->next;
+		}
+		printf("\t");
+		if (current_b != NULL)
+		{
+			printf("%d", current_b->data);
+			current_b = current_b->next;
+		}
+		printf("\n");
 	}
+	printf("_\t_\n");
+	printf("a\tb\n");
 	//Output of instructions/stack
 	return (0);
 }
