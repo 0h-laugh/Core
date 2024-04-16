@@ -34,6 +34,9 @@ typedef struct s_stack
 //main funtions
 
 
+//check input
+int	check_input(char **av);
+
 //stack funtions
 void	fill_stack(int ac, char **av, t_stack *stack_a);
 
