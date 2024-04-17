@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/12 22:52:02 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:39:19 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@
 typedef struct s_node
 {
 	int				data;
+	int 			pos;
 	struct s_node	*next;
+	struct s_node	*prev;
 }		t_node;
 
 typedef struct s_stack
 {
 	int		size;
 	t_node	*top;
+	t_node	*bot;
 }		t_stack;
 
 //main funtions

@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/16 16:16:05 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:51:37 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,41 @@
 
 int main(int ac, char **av)
 {
-	//Declare and initalize stack
+	//Declare pointers to two data structs, one 'a' and one 'b'
 	t_stack stack_a;
 	t_stack stack_b;
 
+	//Set them both to NULL to avoid undefined behaviour
 	stack_a.top = NULL;
 	stack_b.top = NULL;
 
-	//take input and put it into stack
+	//Check input count and if its empty
+		//If less than 2 return Error
+
+	//handle both cases of input - normal arguments and string
+		//if string use split to split into substrings
+
+	//Initalize stack_a
+		//Handle all errors, check duplicates, etc
+			//in case of any free a and return error
+
+	//Check if each input is long int
+		//if not convert
+
+	//Append nodes into stack_a
 	fill_stack(ac, av, &stack_a);
 
-	//Sort
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	reverse_rotate_ab(&stack_a, &stack_b);
+	//Check if its sorted
+		//if not - sort by alghoritm
+			// if only 2 numbers
+				//swap
+			// if 3 numbers
+				//sort_three
+			// if more than 3 numbers
+				//turk algorithm
+
+	//Clean up the stack
+
 	//Temporary print
 	t_node *current_a = stack_a.top;
 	t_node *current_b = stack_b.top;
@@ -49,6 +69,5 @@ int main(int ac, char **av)
 	}
 	printf("_\t_\n");
 	printf("a\tb\n");
-	//Output of instructions/stack
 	return (0);
 }
