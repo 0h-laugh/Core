@@ -42,7 +42,7 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *line, char *buffer)
+char	*ft_gstrjoin(char *line, char *buffer)
 {
 	size_t	i;
 	size_t	j;

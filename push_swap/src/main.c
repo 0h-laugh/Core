@@ -55,32 +55,13 @@ int main(int ac, char **av)
 	{
 		if (stack_len(stack_a) == 2)
 			swap_a(&stack_a);
-		if (stack_len(stack_a) == 3)
+		else if (stack_len(stack_a) == 3)
 			sort_three(&stack_a);
-		else if (stack_len(stack_a) > 3)
+		else
 			turk_sort(&stack_a, &stack_b);
 	}
-		//Clean up the stack
-	ft_free(stack_a);
-	//Temporary print
-	t_stack *current_a = stack_a.top;
-	t_stack *current_b = stack_b.top;
-	while (current_a != NULL || current_b != NULL)
-	{
-		if (current_a != NULL)
-		{
-			printf("%d", current_a->data);
-			current_a = current_a->next;
-		}
-		printf("\t");
-		if (current_b != NULL)
-		{
-			printf("%d", current_b->data);
-			current_b = current_b->next;
-		}
-		printf("\n");
-	}
-	printf("_\t_\n");
-	printf("a\tb\n");
+
+	//Clean up the stack
+	ft_free(&stack_a);
 	return (0);
 }

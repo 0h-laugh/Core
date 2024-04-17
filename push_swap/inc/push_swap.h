@@ -38,10 +38,8 @@ typedef struct s_stack
 int	check_input(char **av);
 
 //Stack init
-void	fill_stack(int ac, char **av, t_stack *stack_a);
 
 //Node init
-void	create_node(t_stack *stack, int value);
 
 //Stack utils
 
