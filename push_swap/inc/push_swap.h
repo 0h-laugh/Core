@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/17 16:18:22 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:31:11 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # include <stdio.h>
 
 //My double linked list structure
-typedef struct s_node
+typedef struct s_stack
 {
 	int				data;		//value stored in node
 	int 			pos;		//position of node in stack
 	int 			cost;		//result of counting cost function
 	int 			median;		//median of all values
 	int				cheapest;	//here i store what has the lowest cost
-	struct s_node	*target;	//pointer to target node
-	struct s_node	*next;		//pointer to next node
-	struct s_node	*prev;		//pointer to previous node
-}		t_node;
+	struct s_stack	*target;	//pointer to target node
+	struct s_stack	*next;		//pointer to next node
+	struct s_stack	*prev;		//pointer to previous node
+}		t_stack;
 
 //Errors
 
