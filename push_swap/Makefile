@@ -11,38 +11,42 @@
 # **************************************************************************** #
 
 NAME	= push_swap
+CC		= cc
+FLAGS	= -Wall -Werror -Wextra -I
 
-CC	= cc
+LIBFT	= ./libft/libft.a
+SRC_DIR	= ./src/
+HDR_DIR	= ./inc/
+OBJ_DIR	= ./obj/
 
-FLAGS	= -Wall -Werror -Wextra
+SRCS	= $(SRC_DIR)main.c\
+	  $(SRC_DIR)swap.c\
+	  $(SRC_DIR)push.c\
+	  $(SRC_DIR)rotate.c\
+	  $(SRC_DIR)reverse_rotate.c\
 
-SRCDIR	= ./src/
+OBJS	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
-HDRDIR	= ./inc/
 
-SRCS	= $(SRCDIR)stack.c\
-	  $(SRCDIR)main.c\
-	  $(SRCDIR)fill.c\
-	  $(SRCDIR)swap.c\
-	  $(SRCDIR)push.c\
-	  $(SRCDIR)rotate.c\
-	  $(SRCDIR)reverse_rotate.c\
+all:	$(LIBFT) $(NAME)
 
-OBJS	= $(SRCS:.c=.o)
+$(LIBFT):
+		@make -C ./libft
 
-all:	$(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+		@$(CC) $(FLAGS) $(HDR_DIR) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(NAME): $(OBJS)
-	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
-
-$(SRCDIR)%.o: $(SRCDIR)%.c
-	@$(CC) $(FLAGS) -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+		@mkdir -p $(@D)
+		@$(CC) $(FLAGS) $(HDR_DIR) -c $< -o $@
 
 clean:
-		@rm -f $(OBJS)
+		@rm -f -r $(OBJ_DIR)
+		@make clean -C ./libft
 
 fclean: clean
 		@rm -f $(NAME)
+		@rm -f $(LIBFT)
 
 re: fclean all
 
