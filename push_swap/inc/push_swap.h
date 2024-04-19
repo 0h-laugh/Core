@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/19 12:09:48 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:39:12 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_stack
 //Node init
 
 //Stack utils
+int	check_input(char **av);
 
 //Commands
 	//Swaps
