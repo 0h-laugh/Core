@@ -6,18 +6,16 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/17 19:31:11 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/04/19 12:09:31 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <limits.h>
-# include <stddef.h>
-# include <stdio.h>
+# include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
 
 //My double linked list structure
 typedef struct s_stack
@@ -33,9 +31,6 @@ typedef struct s_stack
 }		t_stack;
 
 //Errors
-
-//Check input
-int	check_input(char **av);
 
 //Stack init
 
@@ -63,6 +58,6 @@ void	reverse_rotate_a(t_stack *stack_a);
 void	reverse_rotate_b(t_stack *stack_b);
 void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b);
 
-//Algorithms
+//Sort
 
 #endif
