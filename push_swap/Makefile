@@ -6,12 +6,12 @@
 #    By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 23:35:56 by ojastrze          #+#    #+#              #
-#    Updated: 2024/04/16 15:56:46 by ojastrze         ###   ########.fr        #
+#    Updated: 2024/04/23 17:02:24 by ojastrze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
-CC		= cc
+CC	= cc
 FLAGS	= -Wall -Werror -Wextra -I
 
 LIBFT	= ./libft/libft.a
