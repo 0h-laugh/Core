@@ -7,5 +7,6 @@
 
 [![LIBFT Badge](https://github.com/0h-laugh/assets/blob/main/libfte.png)](https://github.com/0h-laugh/Core/tree/main/libft)
 
-
+### <p align="center">In progress:</p>
+-push_swap</br>-minitalk
 </div>
