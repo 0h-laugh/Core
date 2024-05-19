@@ -3,6 +3,7 @@
 # 42 Common Core
 *These are my school projects for <sup>42</sup>Warsaw Common Core*
 
+### Finished:
 <picture>
   <a href="https://github.com/0h-laugh/Core/tree/main/libft">
     <img src="https://github.com/0h-laugh/0h-laugh/raw/main/keep_laughing/libft.png" width="120" alt="libft.png">
