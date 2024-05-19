@@ -26,7 +26,6 @@
 </picture>
 
 ### In Progress:
-`Common Core:`
 > push_swap </br>
 > minitalk
 
