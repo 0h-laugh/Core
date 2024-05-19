@@ -1,6 +1,6 @@
 
   
-# 42 Common Core:
+# 42 Common Core
 *These are my school projects for <sup>42</sup>Warsaw Common Core*
 
 <picture>
