@@ -8,10 +8,10 @@
 
 </div>
 
-*This is first project for every student at 42.*
+*May it be a file, stdin, or even later a network connection, you will always need a way to read content line by line.*
 ```
-You need to recode a few functions of the C standard library as well as 
-some other utility functions that will be useful during whole 42 cursus.
+This project is about programming a function that
+returns a line read from a file descriptor.
 ```
 <div align="center">
   
