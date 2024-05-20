@@ -2,7 +2,7 @@
   
 <picture>
   <a href="https://github.com/0h-laugh/Core/tree/main/get_next_line">
-    <img src="https://github.com/0h-laugh/0h-laugh/raw/main/keep_laughing/git_next_line.png" width="240" alt="gnl.png">
+    <img src="https://github.com/0h-laugh/0h-laugh/raw/main/keep_laughing/get_next_line.png" width="240" alt="gnl.png">
   </a>
 </picture>
 
