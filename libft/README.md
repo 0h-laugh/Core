@@ -16,4 +16,7 @@ some other utility functions that will be useful during whole 42 cursus.
 <div align="center">
   
 ### [Subject](https://github.com/0h-laugh/Core/blob/main/libft/en.subject.pdf)
+
+#### *Passed: 125/100*
+
 </div>
