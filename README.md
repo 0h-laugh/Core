@@ -1,7 +1,7 @@
 
   
 # 42 Common Core
-*These are my school projects for <sup>42</sup>Warsaw Common Core*
+*These are my school projects for <sup>42</sup>Warsaw Common Core:*
 
 ### Finished:
 <picture>
