@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/19 19:39:12 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:34:00 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,19 @@ int	check_input(char **av);
 
 //Commands
 	//Swaps
-void	swap_a(t_stack *stack_a);
-void	swap_b(t_stack *stack_b);
-void	swap_ab(t_stack *stack_a, t_stack *stack_b);
+void	swap(t_stack **stack);
+void	swap_ab(t_stack **stack_a, t_stack **stack_b);
 
 	//Pushes
-void	push_a(t_stack *stack_a, t_stack *stack_b);
-void	push_b(t_stack *stack_a, t_stack *stack_b);
+void	push(t_stack **stack_a, t_stack **stack_b);
 
 	//Rotates
-void	rotate_a(t_stack *stack_a);
-void	rotate_b(t_stack *stack_b);
-void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
+void	rotate(t_stack **stack);
+void	rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
 	//Reverse rotates
-void	reverse_rotate_a(t_stack *stack_a);
-void	reverse_rotate_b(t_stack *stack_b);
-void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b);
+void	reverse_rotate(t_stack **stack);
+void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
 //Sort
 

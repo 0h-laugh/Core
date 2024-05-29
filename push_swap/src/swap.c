@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:22:37 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/16 15:40:43 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/05/25 14:21:21 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,26 @@ Do nothing if there is only one or no elements.
 ss : sa and sb at the same time.
 */
 
-void	swap_a(t_stack *stack_a)
+void	swap(t_stack **stack)
 {
-	int	temp;
+	t_stack	*temp;
 
-	if (stack_a->top == NULL || stack_a->top->next == NULL)
+	if (*stack == NULL || *stack->next == NULL)
 		return ;
-	temp = stack_a->top->data;
-	stack_a->top->data = stack_a->top->next->data;
-	stack_a->top->next->data = temp;
+	temp = *stack;
+	*stack = *stack->next;
+	temp->next = *stack->next;
+	*stack->next = temp;
+	if (temp->next != NULL)
+		temp->next->prev = temp;
+	temp->prev = *stack;
+	*stack->prev = NULL;
 }
 
-void	swap_b(t_stack *stack_b)
-{
-	int	temp;
 
-	if (stack_b->top == NULL || stack_b->top->next == NULL)
-		return ;
-	temp = stack_b->top->data;
-	stack_b->top->data = stack_b->top->next->data;
-	stack_b->top->next->data = temp;
-}
 
-void	swap_ab(t_stack *stack_a, t_stack *stack_b)
+void	swap_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);
-	swap_b(stack_b);
+	swap(stack_a);
+	swap(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/05/21 16:54:15 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:34:33 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main(int ac, char **av)
 	if (!is_sorted(stack_a))
 	{
 		if (stack_len(stack_a) == 2)
-			swap_a(&stack_a);
+			swap(&stack_a);
 		else if (stack_len(stack_a) == 3)
 			sort_three(&stack_a);
 		else
