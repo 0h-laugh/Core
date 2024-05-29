@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/05/29 14:34:00 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:58:42 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack
 //Errors
 
 //Stack init
+void	init_stack(t_stack **stack, char **av)
 
 //Node init
 
