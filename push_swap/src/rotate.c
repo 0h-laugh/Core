@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:44:34 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/16 16:20:45 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:40:10 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,22 @@ The first element becomes the last one.
 rr : ra and rb at the same time.
 */
 
-void	rotate_a(t_stack *stack_a)
+void	rotate(t_stack **stack)
 {
 	t_node	*current;
 
-	if (stack_a->top == NULL || stack_a->top->next == NULL)
+	if (stack_a->next == NULL || stack_a->prev->next == NULL)
 		return ;
-	current = stack_a->top;
+	current = stack_a->next;
 	while (current->next != NULL)
 		current = current->next;
-	current->next = stack_a->top;
-	stack_a->top = stack_a->top->next;
-	current->next->next = NULL;
+	current->next = stack_a->prev;
+	stack_a->next = stack_a->prev->next;
+	current->prev->next = NULL;
 }
 
-void	rotate_b(t_stack *stack_b)
+void	rotate_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	t_node	*current;
-
-	if (stack_b->top == NULL || stack_b->top->next == NULL)
-		return ;
-	current = stack_b->top;
-	while (current->next != NULL)
-		current = current->next;
-	current->next = stack_b->top;
-	stack_b->top = stack_b->top->next;
-	current->next->next = NULL;
-}
-
-void	rotate_ab(t_stack *stack_a, t_stack *stack_b)
-{
-	rotate_a(stack_a);
-	rotate_b(stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
 }

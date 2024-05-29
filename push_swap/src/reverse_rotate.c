@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:06:31 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/16 16:15:30 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:39:04 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ The last element becomes the first one.
 rrr : rra and rrb at the same time.
 */
 
-void	reverse_rotate_a(t_stack *stack_a)
+void	reverse_rotate(t_stack **stack)
 {
 	t_node	*current;
 	t_node	*last;
@@ -36,24 +36,8 @@ void	reverse_rotate_a(t_stack *stack_a)
 	stack_a->top = last;
 }
 
-void	reverse_rotate_b(t_stack *stack_b)
+void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	t_node	*current;
-	t_node	*last;
-
-	if (stack_b->top == NULL || stack_b->top->next == NULL)
-		return ;
-	current = stack_b->top;
-	while (current->next->next != NULL)
-		current = current->next;
-	last = current->next;
-	current->next = NULL;
-	last->next = stack_b->top;
-	stack_b->top = last;
-}
-
-void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b)
-{
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }
