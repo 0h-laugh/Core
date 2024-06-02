@@ -16,9 +16,3 @@
 /*   Updated: 2024/05/25 13:06:39 by ojastrze                                 */
 /*                                               .                 .          */
 /* ************************************************************************** */
-
-//pseudocode:
-//sort three
-
-//turk sork
- //always come to sort three?
