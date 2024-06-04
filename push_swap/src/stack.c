@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:55:17 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/04 17:51:04 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/04 18:44:23 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,23 @@
 
 t_stack	*split_init_stack(char **av)
 {
+	t_stack	*stack_a;
+	char	**temp;
+	int 	i;
+	int 	j;
 
+	a = NULL;
+	i = 0;
+	temp = ft_split(av[1], 32);
+	while (tmp[i])
+	{
+		j = ft_atoi(tmp[i]);
+		ft_add_back(&a, new_node(j));
+		i++;
+	}
+	freestr(temp);
+	free(temp);
+	return (a);
 }
 //Check if ac < 2
 //	(error than)
@@ -39,7 +55,10 @@ t_stack	*init_stack(int ac, char **av)
 	{
 		while (ac > i)
 		{
-
+			j = ft_atoi(av[i]);
+			ft_add_back(&a, new_node(j));
+			i++;
 		}
 	}
+	return (a);
 }
