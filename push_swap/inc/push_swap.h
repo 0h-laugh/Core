@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/05/29 15:58:42 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:42:11 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@
 //My double linked list structure
 typedef struct s_stack
 {
-	int				data;		//value stored in node
+	int				value;		//value stored in node
 	int 			pos;		//position of node in stack
-	int 			cost;		//result of counting cost function
-	int 			median;		//median of all values
-	int				cheapest;	//here i store what has the lowest cost
-	struct s_stack	*target;	//pointer to target node
 	struct s_stack	*next;		//pointer to next node
 	struct s_stack	*prev;		//pointer to previous node
 }		t_stack;
@@ -33,7 +29,8 @@ typedef struct s_stack
 //Errors
 
 //Stack init
-void	init_stack(t_stack **stack, char **av)
+t_stack	*split_init_stack(char **av);
+t_stack	*init_stack(int ac, char **av);
 
 //Node init
 
