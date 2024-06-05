@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/04 18:44:53 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/05 08:25:00 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_stack	*init_stack(int ac, char **av);
 //Node init
 
 //Stack utils
+t_stack *ft_lstlast(t_stack *lst);
+t_stack	*ft_lstsize(t_stack *lst);
 int	check_input(char **av);
 
 //Commands
