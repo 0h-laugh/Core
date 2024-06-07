@@ -12,6 +12,16 @@
 
 #include "../inc/push_swap.h"
 
+static void print_stack(t_stack *stack)
+{
+ t_stack *current = stack;
+ while (current != NULL)
+ {
+  printf("%d\n", current->value);
+  current = current->next;
+ }
+}
+
 int main(int ac, char **av)
 {
 	t_stack *stack_a;
