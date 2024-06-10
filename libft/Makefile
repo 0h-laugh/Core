@@ -9,7 +9,7 @@
 #    Updated: 2024/03/15 14:52:58 by ojastrze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
+#need to make loading
 NAME	= libft.a
 
 SRCS	=	ft_isalpha.c \
