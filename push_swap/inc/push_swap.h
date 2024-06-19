@@ -6,13 +6,14 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/05 08:25:00 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:49:46 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdbool.h>
 # include <limits.h>
 # include "../libft/inc/libft.h"
 # include "../libft/inc/ft_printf.h"
@@ -22,6 +23,10 @@ typedef struct s_stack
 {
 	int				value;		//value stored in node
 	int 			pos;		//position of node in stack
+	int				cost;		//how many commands
+	bool			above_median;
+	bool			cheapest;
+	struct s_stack	*target;
 	struct s_stack	*next;		//pointer to next node
 	struct s_stack	*prev;		//pointer to previous node
 }		t_stack;

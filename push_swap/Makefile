@@ -10,36 +10,45 @@
 #                                                                              #
 # **************************************************************************** #
 
+#program name
 NAME	= push_swap
+
+#compiling utils
 CC	= cc
 FLAGS	= -Wall -Werror -Wextra -I
 
+#directories
 LIBFT	= ./libft/libft.a
 SRC_DIR	= ./src/
 HDR_DIR	= ./inc/
 OBJ_DIR	= ./obj/
 
+#source files
 SRCS	= $(SRC_DIR)main.c\
 	  $(SRC_DIR)swap.c\
 	  $(SRC_DIR)push.c\
 	  $(SRC_DIR)rotate.c\
 	  $(SRC_DIR)reverse_rotate.c\
 
+#produce object files
 OBJS	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
-
-all:	$(LIBFT) $(NAME)
-
+#compile libft
 $(LIBFT):
 		@make -C ./libft
 
+all:	$(NAME)
+
+#program build
 $(NAME): $(OBJS) $(LIBFT)
 		@$(CC) $(FLAGS) $(HDR_DIR) $(OBJS) $(LIBFT) -o $(NAME)
 
+#compile object files from source files
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 		@mkdir -p $(@D)
 		@$(CC) $(FLAGS) $(HDR_DIR) -c $< -o $@
 
+#rules
 clean:
 		@rm -f -r $(OBJ_DIR)
 		@make clean -C ./libft

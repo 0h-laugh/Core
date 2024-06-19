@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/04 18:44:38 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:35:25 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void print_stack(t_stack *stack)
 {
- t_stack *current = stack;
- while (current != NULL)
- {
-  printf("%d\n", current->value);
-  current = current->next;
- }
+	t_stack *current = stack;
+	while (current != NULL)
+	{
+		printf("%d\n", current->value);
+		current = current->next;
+	}
 }
 
 int main(int ac, char **av)
