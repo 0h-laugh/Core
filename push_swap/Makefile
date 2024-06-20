@@ -25,19 +25,16 @@ OBJ_DIR	= ./obj/
 
 #source files
 SRCS	= $(SRC_DIR)main.c\
-	  $(SRC_DIR)swap.c\
-	  $(SRC_DIR)push.c\
-	  $(SRC_DIR)rotate.c\
-	  $(SRC_DIR)reverse_rotate.c\
+	  $(SRC_DIR)stack_utils.c\
 
 #produce object files
 OBJS	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
+all:	$(NAME)
+
 #compile libft
 $(LIBFT):
 		@make -C ./libft
-
-all:	$(NAME)
 
 #program build
 $(NAME): $(OBJS) $(LIBFT)

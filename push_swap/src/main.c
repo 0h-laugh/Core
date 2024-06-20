@@ -1,44 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 20:25:29 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/19 20:35:25 by ojastrze         ###   ########.fr       */
+/*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/06/20 23:06:08 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void print_stack(t_stack *stack)
+int main(int argc, char **argv)
 {
-	t_stack *current = stack;
-	while (current != NULL)
+	// Check if there are enough arguments
+	if (argc < 2)
 	{
-		printf("%d\n", current->value);
-		current = current->next;
+		ft_putstr_fd("Error: Not enough arguments\n", 2);
+		return 1;
 	}
-}
 
-int main(int ac, char **av)
-{
-	t_stack *stack_a;
+	// Convert argv to an array of integers
+	int *numbers = malloc(sizeof(int) * (argc - 1));
+	if (!numbers)
+	{
+		ft_putstr_fd("Error: Malloc failed\n", 2);
+		return 1;
+	}
+	int i = 1;
+	while (i < argc)
+	{
+		numbers[i - 1] = ft_atoi(argv[i]);
+		i++;
+	}
 
-	stack_a = init_stack(ac, av);
-	if (!a)
+	// Initialize the stack with the input numbers
+	t_stack *stack = init_stack(numbers, argc - 1);
+	if (!stack)
 	{
-		ft_free(&a);
-		ft_error();
+		ft_putstr_fd("Error: Stack initialization failed\n", 2);
+		free(numbers);
+		return 1;
 	}
-	if (!check_input(a))
-	{
-		ft_free(&a);
-		ft_error();
-	}
-	if (!is_sorted(a))
-		ft_sort(&a);
-	ft_free(&a);
-	return (0);
+
+	// Print the stack
+	print_stack(stack);
+
+	// Free the stack and the numbers array when you're done with them
+	ft_lstclear(&stack, free);
+	free(numbers);
+
+	return 0;
 }

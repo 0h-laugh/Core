@@ -3,33 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojastrze <ojastrze@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 08:16:42 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/05 08:24:01 by ojastrze         ###   ########.fr       */
+/*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
+/*   Updated: 2024/06/20 23:04:05 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// This function returns the last element of stack
-t_stack *ft_lstlast(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+#include "../inc/push_swap.h"
 
-// This functions returns size of stack
-t_stack	*ft_lstsize(t_stack *lst)
+t_stack	*init_stack(int *numbers, int size)
 {
-	size_t	i;
+	t_stack *stack = NULL;
+	t_stack *new_node;
+	int i;
+	int *p;
 
 	i = 0;
-	while (lst->next)
+	while (i < size)
 	{
-		lst = lst->next;
+		p = malloc(sizeof(int));
+		if (!p)
+		{
+			//handle error
+			return NULL;
+		}
+		*p = numbers[i];
+		new_node = ft_lstnew(p);
+		if (!new_node)
+		{
+			//handle error
+			return NULL;
+		}
+		ft_lstadd_back(&stack, new_node);
 		i++;
 	}
-	return (i);
+	return stack;
+}
+
+void	print_stack(t_stack *stack)
+{
+	t_stack *current;
+	current = stack;
+	while (current != NULL)
+	{
+		ft_printf("%d\n", *(int *)current->content);
+		current = current->next;
+	}
 }
