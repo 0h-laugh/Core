@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/20 23:04:05 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:45:53 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ t_stack	*init_stack(int *numbers, int size)
 		p = malloc(sizeof(int));
 		if (!p)
 		{
-			//handle error
+			ft_error();
 			return NULL;
 		}
 		*p = numbers[i];
 		new_node = ft_lstnew(p);
 		if (!new_node)
 		{
-			//handle error
+			ft_error();
 			return NULL;
 		}
 		ft_lstadd_back(&stack, new_node);
@@ -50,4 +50,10 @@ void	print_stack(t_stack *stack)
 		ft_printf("%d\n", *(int *)current->content);
 		current = current->next;
 	}
+}
+
+void	ft_error(void)
+{
+	ft_printf("Error\n");
+	exit (1);
 }

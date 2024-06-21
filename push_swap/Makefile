@@ -26,6 +26,7 @@ OBJ_DIR	= ./obj/
 #source files
 SRCS	= $(SRC_DIR)main.c\
 	  $(SRC_DIR)stack_utils.c\
+	  $(SRC_DIR)input_check.c\
 
 #produce object files
 OBJS	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
