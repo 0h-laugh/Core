@@ -29,6 +29,7 @@ int ft_check_dup(int *numbers, int size, int number);
 
 //Stack init
 t_stack	*init_stack(int *numbers, int size);
+int *parse_args(int argc, char **argv);
 
 //Stack utils
 void	print_stack(t_stack *stack);

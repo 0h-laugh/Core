@@ -41,6 +41,35 @@ t_stack	*init_stack(int *numbers, int size)
 	return stack;
 }
 
+int *parse_args(int argc, char **argv)
+{
+	int *numbers;
+	int i;
+
+	i = 1;
+	if (argc < 2)
+		ft_error();
+	numbers = malloc (sizeof(int) * (argc - 1));
+	if (!numbers)
+		ft_error();
+	while (i < argc)
+	{
+		if (!ft_isnumber(argv[i]) || ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
+		{
+			free(numbers);
+			ft_error();
+		}
+		numbers[i - 1] = ft_atoi(argv[i]);
+		if (i != 1 && ft_check_dup(numbers, i - 1, numbers[i - 1]))
+		{
+			free(numbers);
+			ft_error();
+		}
+		i++;
+	}
+	return numbers;
+}
+
 void	print_stack(t_stack *stack)
 {
 	t_stack *current;
