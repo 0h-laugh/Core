@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:01 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/17 20:36:36 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:42:45 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,6 @@ size_t	ft_strlen(char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	return (0);
 }
 
 char	*ft_gstrjoin(char *line, char *buffer)

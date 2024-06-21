@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/21 19:19:40 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:36:37 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //This function checks if a given string is a number.
 int	ft_isnumber(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
@@ -33,7 +33,7 @@ int	ft_isnumber(char *str)
 long	ft_atol(const char *str)
 {
 	long	res;
-	int 	sign;
+	int		sign;
 
 	res = 0;
 	sign = 1;
@@ -53,9 +53,9 @@ long	ft_atol(const char *str)
 	return (res * sign);
 }
 
-int ft_check_dup(int *numbers, int size, int number)
+int	ft_check_dup(int *numbers, int size, int number)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -65,4 +65,23 @@ int ft_check_dup(int *numbers, int size, int number)
 		i++;
 	}
 	return (0);
+}
+
+void	ft_error(void)
+{
+	ft_printf("Error\n");
+	exit (1);
+}
+
+void	ft_free_split(char **split_args)
+{
+	int	i;
+
+	i = 0;
+	while (split_args[i])
+	{
+		free(split_args[i]);
+		i++;
+	}
+	free(split_args);
 }
