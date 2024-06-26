@@ -6,13 +6,14 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:43:38 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/04/17 20:37:17 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:08:42 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -30,8 +31,6 @@ char	*ft_get_line(char *line);
 char	*ft_new_line(char *line);
 
 //utils
-size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
 char	*ft_gstrjoin(char *line, char *buffer);
 
 #endif

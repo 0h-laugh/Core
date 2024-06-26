@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/21 20:24:33 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:09:27 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		*numbers;
+	size_t 	size;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	numbers = parse_args(argc, argv);
-	stack_a = init_stack(numbers, argc - 1);
+	if (argc == 2 && ft_strchr(argv[1], ' '))
+		size = ft_strlen(argv[1]) / 2 + 1;
+	else
+		size = argc - 1;
+	stack_a = init_stack(numbers, size);
 	if (!stack_a)
 	{
 		free(numbers);

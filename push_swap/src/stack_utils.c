@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/21 20:41:11 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:09:23 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ int	*parse_args(int argc, char **argv)
 	if (argc < 2)
 		ft_error();
 	if (argc == 2 && ft_strchr(argv[1], ' '))
-		return (parse_string_args(argv[1]));
+	{
+		numbers = parse_string_args(argv[1]);
+		return numbers;
+	}
 	numbers = allocate_numbers(argc);
 	while (++i < argc)
 	{
