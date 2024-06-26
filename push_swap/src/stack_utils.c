@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/26 15:56:33 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 20:41:37 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,50 @@ int	*parse_args(int argc, char **argv)
 {
 	int	*numbers;
 	int	i;
+	int j;
 	int num_count;
-	char *args;
-	char *temp;
+	int total_args;
+	char **split_args;
 
-	numbers = allocate_numbers(argc);
+	total_args = 0;
+	i = 1;
+	while (i < argc) {
+		split_args = ft_split(argv[i], ' ');
+		j = 0;
+		while (split_args[j]) {
+			total_args++;
+			j++;
+		}
+		ft_free_split(split_args);
+		i++;
+	}
+
+	numbers = allocate_numbers(total_args);
 	i = 1;
 	num_count = 0;
-	args = ft_strdup(argv[i]);
-	while (++i < argc)
-	{
-		temp = ft_strjoin(args, " ");
-		free(args);
-		args = ft_strjoin(temp, argv[i]);
-		free(temp);
+	while (i < argc) {
+		split_args = ft_split(argv[i], ' ');
+		j = 0;
+		while (split_args[j])
+		{
+			if (!ft_isnumber(split_args[j]) || ft_atol(split_args[j]) > INT_MAX
+				|| ft_atol(split_args[j]) < INT_MIN)
+			{
+				free(numbers);
+				ft_error();
+			}
+			numbers[num_count] = ft_atoi(split_args[j]);
+			if (num_count != 0 && ft_check_dup(numbers, num_count, numbers[num_count]))
+			{
+				free(numbers);
+				ft_error();
+			}
+			num_count++;
+			j++;
+		}
+		ft_free_split(split_args);
+		i++;
 	}
-	num_count = parse_single_arg(args, numbers, 0);
-	free(args);
 	return (numbers);
 }
 
