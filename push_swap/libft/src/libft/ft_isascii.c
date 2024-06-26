@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:47:15 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 13:37:01 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:51:08 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 int	ft_isascii(int c)
 {

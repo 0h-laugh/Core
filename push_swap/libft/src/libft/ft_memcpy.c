@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:49:20 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 16:16:13 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:52:22 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

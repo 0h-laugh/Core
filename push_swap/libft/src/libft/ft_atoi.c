@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:21:30 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 12:01:51 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:50:38 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 int	ft_atoi(const char *nptr)
 {

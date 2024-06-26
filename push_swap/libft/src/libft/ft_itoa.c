@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:56:57 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/08 17:58:40 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:51:24 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 static int	ft_intlen(int c)
 {

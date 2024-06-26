@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:38:43 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/01 17:47:20 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:52:51 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

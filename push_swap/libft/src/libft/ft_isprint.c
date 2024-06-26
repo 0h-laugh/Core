@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:50:48 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 15:28:37 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:51:19 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 int	ft_isprint(int c)
 {

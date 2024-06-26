@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:30:27 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/08 16:12:41 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:53:14 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {

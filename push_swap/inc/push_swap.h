@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/21 20:44:21 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:41:06 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ft_free_split(char **split_args);
 
 //Stack init
 t_stack	*init_stack(int *numbers, int size);
-int		*parse_string_args(char *arg);
-int		*parse_args(int argc, char **argv);
 
 //Stack utils
-void	print_stack(t_stack *stack);
+void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 int		*allocate_numbers(int argc);
+int		parse_single_arg(char *arg, int *numbers, int num_count);
+int		*parse_args(int argc, char **argv);
 
 //Commands
 	//Swaps

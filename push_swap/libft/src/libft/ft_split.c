@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:19:35 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/14 19:20:49 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:50:02 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 static int	ft_wordcount(const char *s, char c)
 {

@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:30:25 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/09 15:35:52 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:52:08 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

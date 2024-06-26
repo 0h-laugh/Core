@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:36:10 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/08 13:54:43 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:53:46 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 int	ft_tolower(int c)
 {

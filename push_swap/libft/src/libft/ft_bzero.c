@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:25:56 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/07 16:11:58 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:50:43 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

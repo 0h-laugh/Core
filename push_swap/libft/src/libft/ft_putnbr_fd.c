@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:53:42 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/08 19:56:24 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:52:41 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

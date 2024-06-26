@@ -6,11 +6,11 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:28:06 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/03/08 14:39:44 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:53:22 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/libft.h"
 
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {

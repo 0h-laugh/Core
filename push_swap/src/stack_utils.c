@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/26 14:09:23 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:56:33 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,14 @@ int	*allocate_numbers(int argc)
 	return (numbers);
 }
 
-int	*parse_string_args(char *arg)
+int	parse_single_arg(char *arg, int *numbers, int num_count)
 {
 	char	**split_args;
-	int		*numbers;
 	int		i;
-	int		len;
 
 	split_args = ft_split(arg, ' ');
-	len = 0;
-	while (split_args[len])
-		len++;
-	numbers = allocate_numbers(len + 1);
 	i = 0;
-	while (i < len)
+	while (split_args[i])
 	{
 		if (!ft_isnumber(split_args[i]) || ft_atol(split_args[i]) > INT_MAX
 			|| ft_atol(split_args[i]) < INT_MIN)
@@ -69,58 +63,67 @@ int	*parse_string_args(char *arg)
 			free(numbers);
 			ft_error();
 		}
-		numbers[i] = ft_atoi(split_args[i]);
-		if (i != 0 && ft_check_dup(numbers, i, numbers[i]))
+		numbers[num_count] = ft_atoi(split_args[i]);
+		if (num_count != 0 && ft_check_dup(numbers, num_count, numbers[num_count]))
 		{
 			free(numbers);
 			ft_error();
 		}
+		num_count++;
 		i++;
 	}
 	ft_free_split(split_args);
-	return (numbers);
+	return (num_count);
 }
 
 int	*parse_args(int argc, char **argv)
 {
 	int	*numbers;
 	int	i;
+	int num_count;
+	char *args;
+	char *temp;
 
-	i = 0;
-	if (argc < 2)
-		ft_error();
-	if (argc == 2 && ft_strchr(argv[1], ' '))
-	{
-		numbers = parse_string_args(argv[1]);
-		return numbers;
-	}
 	numbers = allocate_numbers(argc);
+	i = 1;
+	num_count = 0;
+	args = ft_strdup(argv[i]);
 	while (++i < argc)
 	{
-		if (!ft_isnumber(argv[i]) || ft_atol(argv[i]) > INT_MAX
-			|| ft_atol(argv[i]) < INT_MIN)
-		{
-			free(numbers);
-			ft_error();
-		}
-		numbers[i - 1] = ft_atoi(argv[i]);
-		if (i != 1 && ft_check_dup(numbers, i - 1, numbers[i - 1]))
-		{
-			free(numbers);
-			ft_error();
-		}
+		temp = ft_strjoin(args, " ");
+		free(args);
+		args = ft_strjoin(temp, argv[i]);
+		free(temp);
 	}
+	num_count = parse_single_arg(args, numbers, 0);
+	free(args);
 	return (numbers);
 }
 
-void	print_stack(t_stack *stack)
+void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*current;
+	t_stack	*current_a;
+	t_stack	*current_b;
 
-	current = stack;
-	while (current != NULL)
+	current_a = stack_a;
+	current_b = stack_b;
+	ft_printf("Stack A\tStack B\n");
+	while (current_a != NULL || current_b != NULL)
 	{
-		ft_printf("%d\n", *(int *)current->content);
-		current = current->next;
+		if (current_a != NULL)
+		{
+			ft_printf("%d\t", *(int *)current_a->content);
+			current_a = current_a->next;
+		}
+		else
+			ft_printf(" \t");
+
+		if (current_b != NULL)
+		{
+			ft_printf("%d\n", *(int *)current_b->content);
+			current_b = current_b->next;
+		}
+		else
+			ft_printf(" \n");
 	}
 }

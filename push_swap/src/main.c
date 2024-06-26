@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/26 14:09:27 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:22:38 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	main(int argc, char **argv)
 		free(numbers);
 		ft_error();
 	}
-	print_stack(stack_a);
-	print_stack(stack_b);
+	print_stacks(stack_a, stack_b);
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	free(numbers);
