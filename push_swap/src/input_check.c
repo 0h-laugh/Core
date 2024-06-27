@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/21 20:36:37 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:08:55 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,4 @@ void	ft_error(void)
 {
 	ft_printf("Error\n");
 	exit (1);
-}
-
-void	ft_free_split(char **split_args)
-{
-	int	i;
-
-	i = 0;
-	while (split_args[i])
-	{
-		free(split_args[i]);
-		i++;
-	}
-	free(split_args);
 }

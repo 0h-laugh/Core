@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/26 15:41:06 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:08:55 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_error(void);
 int		ft_isnumber(char *str);
 long	ft_atol(const char *str);
 int		ft_check_dup(int *numbers, int size, int number);
-void	ft_free_split(char **split_args);
 
 //Stack init
 t_stack	*init_stack(int *numbers, int size);

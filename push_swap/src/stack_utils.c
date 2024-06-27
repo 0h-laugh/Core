@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/26 20:41:37 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:03:27 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,80 +48,30 @@ int	*allocate_numbers(int argc)
 	return (numbers);
 }
 
-int	parse_single_arg(char *arg, int *numbers, int num_count)
+int	*parse_args(int argc, char **argv)
 {
-	char	**split_args;
-	int		i;
+	int	*numbers;
+	int	i;
+	int num_count;
 
-	split_args = ft_split(arg, ' ');
-	i = 0;
-	while (split_args[i])
+	numbers = allocate_numbers(argc);
+	i = 1;
+	num_count = 0;
+	while (i < argc)
 	{
-		if (!ft_isnumber(split_args[i]) || ft_atol(split_args[i]) > INT_MAX
-			|| ft_atol(split_args[i]) < INT_MIN)
+		if (!ft_isnumber(argv[i]) || ft_atol(argv[i]) > INT_MAX
+			|| ft_atol(argv[i]) < INT_MIN)
 		{
-			free(numbers);
-			ft_error();
+				free(numbers);
+				ft_error();
 		}
-		numbers[num_count] = ft_atoi(split_args[i]);
+		numbers[num_count] = ft_atoi(argv[i]);
 		if (num_count != 0 && ft_check_dup(numbers, num_count, numbers[num_count]))
 		{
 			free(numbers);
 			ft_error();
 		}
 		num_count++;
-		i++;
-	}
-	ft_free_split(split_args);
-	return (num_count);
-}
-
-int	*parse_args(int argc, char **argv)
-{
-	int	*numbers;
-	int	i;
-	int j;
-	int num_count;
-	int total_args;
-	char **split_args;
-
-	total_args = 0;
-	i = 1;
-	while (i < argc) {
-		split_args = ft_split(argv[i], ' ');
-		j = 0;
-		while (split_args[j]) {
-			total_args++;
-			j++;
-		}
-		ft_free_split(split_args);
-		i++;
-	}
-
-	numbers = allocate_numbers(total_args);
-	i = 1;
-	num_count = 0;
-	while (i < argc) {
-		split_args = ft_split(argv[i], ' ');
-		j = 0;
-		while (split_args[j])
-		{
-			if (!ft_isnumber(split_args[j]) || ft_atol(split_args[j]) > INT_MAX
-				|| ft_atol(split_args[j]) < INT_MIN)
-			{
-				free(numbers);
-				ft_error();
-			}
-			numbers[num_count] = ft_atoi(split_args[j]);
-			if (num_count != 0 && ft_check_dup(numbers, num_count, numbers[num_count]))
-			{
-				free(numbers);
-				ft_error();
-			}
-			num_count++;
-			j++;
-		}
-		ft_free_split(split_args);
 		i++;
 	}
 	return (numbers);
