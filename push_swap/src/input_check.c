@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/27 09:08:55 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/28 21:30:05 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,20 @@ void	ft_error(void)
 {
 	ft_printf("Error\n");
 	exit (1);
+}
+
+int	input_check(char *arg, int *numbers, int num_count)
+{
+	if (!ft_isnumber(arg) || ft_atol(arg) > INT_MAX || ft_atol(arg) < INT_MIN)
+	{
+		free(numbers);
+		ft_error();
+	}
+	numbers[num_count] = ft_atoi(arg);
+	if (num_count != 0 && ft_check_dup(numbers, num_count, numbers[num_count]))
+	{
+		free(numbers);
+		ft_error();
+	}
+	return (num_count + 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ojastrze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 23:38:02 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/27 09:08:55 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/28 21:30:05 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include <limits.h>
+# include <stdlib.h>
 # include "../libft/inc/libft.h"
 # include "../libft/inc/ft_printf.h"
 
@@ -33,7 +34,7 @@ t_stack	*init_stack(int *numbers, int size);
 //Stack utils
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 int		*allocate_numbers(int argc);
-int		parse_single_arg(char *arg, int *numbers, int num_count);
+int	input_check(char *arg, int *numbers, int num_count);
 int		*parse_args(int argc, char **argv);
 
 //Commands

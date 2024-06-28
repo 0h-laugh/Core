@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/27 09:03:27 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/06/28 21:35:51 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,37 @@ int	*allocate_numbers(int argc)
 
 int	*parse_args(int argc, char **argv)
 {
-	int	*numbers;
-	int	i;
-	int num_count;
+	int		*numbers;
+	int		i;
+	int		num_count;
+	char	**split_args;
 
-	numbers = allocate_numbers(argc);
-	i = 1;
-	num_count = 0;
-	while (i < argc)
+	if (argc == 2 && ft_strchr(argv[1], ' '))
 	{
-		if (!ft_isnumber(argv[i]) || ft_atol(argv[i]) > INT_MAX
-			|| ft_atol(argv[i]) < INT_MIN)
+		split_args = ft_split(argv[1], ' ');
+		i = 0;
+		while (split_args[i])
+			i++;
+		numbers = allocate_numbers(i);
+		i = 0;
+		num_count = 0;
+		while (split_args[i])
 		{
-				free(numbers);
-				ft_error();
+			num_count = input_check(split_args[i], numbers, num_count);
+			i++;
 		}
-		numbers[num_count] = ft_atoi(argv[i]);
-		if (num_count != 0 && ft_check_dup(numbers, num_count, numbers[num_count]))
+		free(split_args);
+	}
+	else
+	{
+		numbers = allocate_numbers(argc);
+		i = 1;
+		num_count = 0;
+		while (i < argc)
 		{
-			free(numbers);
-			ft_error();
+			num_count = input_check(argv[i], numbers, num_count);
+			i++;
 		}
-		num_count++;
-		i++;
 	}
 	return (numbers);
 }
