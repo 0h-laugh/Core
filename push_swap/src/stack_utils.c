@@ -6,83 +6,78 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/06/28 21:35:51 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/07/04 20:54:41 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-t_stack	*init_stack(int *numbers, int size)
+t_stack	*init_node(int number)
 {
-	t_stack	*stack;
-	t_stack	*new_node;
-	int		i;
-	int		*p;
+	t_stack *new_node;
 
-	stack = NULL;
-	i = 0;
-	while (i < size)
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		ft_error();
+	new_node->content = malloc(sizeof(int));
+	if (!new_node->content)
 	{
-		p = malloc(sizeof(int));
-		if (!p)
-			ft_error();
-		*p = numbers[i];
-		new_node = ft_lstnew(p);
-		if (!new_node)
-			ft_error();
-		ft_lstadd_back(&stack, new_node);
-		i++;
+		free(new_node);
+		ft_error();
 	}
-	return (stack);
+	*(int *)(new_node->content) = number;
+	new_node->next = NULL;
+	return (new_node);
 }
 
-int	*allocate_numbers(int argc)
+t_stack	*init_one(char *arg, t_stack *stack_a, int i)
 {
-	int	*numbers;
+	char        **split_args;
+	int         j;
+	long int	number;
 
-	if (argc < 2)
-		ft_error();
-	numbers = malloc(sizeof(int) * (argc - 1));
-	if (!numbers)
-		ft_error();
-	return (numbers);
+	split_args = ft_split(arg, ' ');
+	j = 0;
+	while (split_args[j])
+	{
+		number = ft_atoi(split_args[j]);
+		if (number > INT_MAX || number < INT_MIN)
+			ft_error();
+		if (i == 1 && j == 0)
+			stack_a = init_node((int)number);
+		else
+			ft_lstadd_back(&stack_a, init_node((int)number));
+		free(split_args[j]);
+		j++;
+	}
+	free(split_args);
+	return (stack_a);
 }
 
-int	*parse_args(int argc, char **argv)
+t_stack	*init_separate(char *arg, t_stack *stack_a, int i)
 {
-	int		*numbers;
-	int		i;
-	int		num_count;
-	char	**split_args;
+	long int	number;
 
-	if (argc == 2 && ft_strchr(argv[1], ' '))
-	{
-		split_args = ft_split(argv[1], ' ');
-		i = 0;
-		while (split_args[i])
-			i++;
-		numbers = allocate_numbers(i);
-		i = 0;
-		num_count = 0;
-		while (split_args[i])
-		{
-			num_count = input_check(split_args[i], numbers, num_count);
-			i++;
-		}
-		free(split_args);
-	}
+	number = ft_atoi(arg);
+	if (number > INT_MAX || number < INT_MIN)
+		ft_error();
+	if (i == 1)
+		stack_a = init_node((int)number);
 	else
+		ft_lstadd_back(&stack_a, init_node((int)number));
+	return (stack_a);
+}
+
+//This function checks if stack is sorted
+int	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
 	{
-		numbers = allocate_numbers(argc);
-		i = 1;
-		num_count = 0;
-		while (i < argc)
-		{
-			num_count = input_check(argv[i], numbers, num_count);
-			i++;
-		}
+		if (*(int *)(stack->content) > *(int *)(stack->next->content))
+			return (0);
+		stack = stack->next;
 	}
-	return (numbers);
+	return (1);
 }
 
 void	print_stacks(t_stack *stack_a, t_stack *stack_b)

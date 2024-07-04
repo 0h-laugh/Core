@@ -28,6 +28,7 @@ SRCS	= $(SRC_DIR)main.c\
 	  $(SRC_DIR)stack_utils.c\
 	  $(SRC_DIR)input_check.c\
 	  $(SRC_DIR)commands.c\
+	  $(SRC_DIR)stack.c\
 
 #produce object files
 OBJS	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
