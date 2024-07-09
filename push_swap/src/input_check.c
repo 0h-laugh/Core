@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/04 21:16:51 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/07/08 18:07:30 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	input_check(char *arg, int *numbers, int num_count)
 	int i;
 
 	split_args = ft_split(arg, ' ');
+	if (!split_args)
+		ft_error();
 	i = 0;
 	while (split_args[i])
 	{
@@ -98,12 +100,6 @@ int	input_check(char *arg, int *numbers, int num_count)
 		num_count++;
 		i++;
 	}
-	i = 0;
-	while (split_args[i])
-	{
-		free(split_args[i]);
-		i++;
-	}
-	free(split_args);
+	free_split_args(split_args);
 	return (num_count);
 }
