@@ -27,7 +27,7 @@ OBJ_DIR	= ./obj/
 SRCS	= $(SRC_DIR)main.c\
 	  $(SRC_DIR)stack_utils.c\
 	  $(SRC_DIR)input_check.c\
-	  $(SRC_DIR)operations.c\
+	  $(SRC_DIR)op.c\
 	  $(SRC_DIR)stack.c\
 	  $(SRC_DIR)sort.c\
 
