@@ -9,3 +9,10 @@
 /*   Updated: 2024/07/15 12:34:46 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../inc/minitalk.h"
+
+void	catch_signal(int signal, siginfo_t *info, void *context)
+{
+
+}
