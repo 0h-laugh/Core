@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@stundent.42warsaw.pl>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 08:40:44 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/16 12:59:27 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:12:24 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int ac, char **av)
 	}
 	pid = getpid();
 	ft_printf("PID:%d\n", pid);
-	ft_printf("Waiting for a message...\n");
 	while (ac == 1)
 	{
 		signal(SIGUSR1, ft_catch);
