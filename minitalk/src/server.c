@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@stundent.42warsaw.pl>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 08:40:44 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/16 16:12:24 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:20:23 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_catch(int signal)
 
 int	main(int ac, char **av)
 {
-	int pid;
+	int	pid;
 
 	(void)av;
 	if (ac != 1)
@@ -44,7 +44,7 @@ int	main(int ac, char **av)
 	while (ac == 1)
 	{
 		signal(SIGUSR1, ft_catch);
-		signal(SIGUSR2,	ft_catch);
+		signal(SIGUSR2, ft_catch);
 	}
 	return (0);
 }

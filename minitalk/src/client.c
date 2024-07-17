@@ -6,7 +6,7 @@
 /*   By: ojastrze <ojastrze@stundent.42warsaw.pl>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 08:40:44 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/16 16:03:50 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:20:43 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
-		while(av[2][i])
+		while (av[2][i])
 		{
 			ft_send(pid, av[2][i]);
 			i++;
