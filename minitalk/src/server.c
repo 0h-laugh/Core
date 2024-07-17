@@ -45,7 +45,6 @@ int	main(int ac, char **av)
 	{
 		signal(SIGUSR1, ft_catch);
 		signal(SIGUSR2,	ft_catch);
-		pause ();
 	}
 	return (0);
 }
