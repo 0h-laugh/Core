@@ -1,31 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojastrze <ojastrze@stundent.42warsaw.pl>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 08:40:44 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/17 18:29:58 by ojastrze         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:36:22 by ojastrze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../inc/minitalk.h"
 
-//Included files
-# include "../libft/inc/libft.h"
-# include "../libft/inc/ft_printf.h"
+void	ft_catch_bonus(int signal)
+{
+	static int	bit;
+	static int	i;
 
-//Included libraries
-# include <signal.h>
+	if (signal == SIGUSR1)
+		i |= (1 << bit);
+	bit++;
+	if (bit == 8)
+	{
+		ft_printf("%c", i);
+		bit = 0;
+		i = 0;
+	}
+}
 
-//Client
-void	ft_send(int pid, char i);
-void	ft_send_bonus(int pid, char i);
+int	main(int ac, char **av)
+{
+	int	pid;
 
-//Server
-void	ft_catch(int signal);
-void	ft_catch_bonus(int signal);
-
-#endif
+	(void)av;
+	if (ac != 1)
+	{
+		ft_printf("Error: Bad usage!\n");
+		ft_printf("Type: ./server\n");
+		return (0);
+	}
+	pid = getpid();
+	ft_printf("PID:%d\n", pid);
+	while (ac == 1)
+	{
+		signal(SIGUSR1, ft_catch_bonus);
+		signal(SIGUSR2, ft_catch_bonus);
+	}
+	return (0);
+}
