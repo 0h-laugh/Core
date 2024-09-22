@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:33:11 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 17:43:03 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:07:07 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /* Checks if provided arg is valid number */
 
-static int	is_number(char *av)
+static int  is_number(char *av)
 {
-    int	i;
+    int i;
 
     i = 0;
     if (ft_issign(av[i]) && av[i + 1] != '\0')
@@ -30,10 +30,10 @@ static int	is_number(char *av)
 
 /* Checks for duplicates */
 
-static int	is_duplicate(char **av)
+static int  is_duplicate(char **av)
 {
-    int	i;
-    int	j;
+    int i;
+    int j;
 
     i = 1;
     while (av[i])
@@ -52,9 +52,9 @@ static int	is_duplicate(char **av)
 
 /* Checks if arg is 0 */
 
-static int	is_zero(char *av)
+static int  is_zero(char *av)
 {
-    int	i;
+    int i;
 
     i = 0;
     if (ft_issign(av[i]))
@@ -66,7 +66,7 @@ static int	is_zero(char *av)
     return (1);
 }
 
-int	ft_issorted(t_stack *stack)
+int ft_issorted(t_stack *stack)
 {
     while (stack->next != NULL)
     {
@@ -79,8 +79,8 @@ int	ft_issorted(t_stack *stack)
 
 int input_check(char **av)
 {
-    int	i;
-    int	nb_zeros;
+    int i;
+    int nb_zeros;
 
     nb_zeros = 0;
     i = 1;

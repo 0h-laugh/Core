@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:06:20 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 16:24:44 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:12:32 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void    free_stack(t_stack **stack)
 {
-    t_stack	*tmp;
+    t_stack *tmp;
 
     if (!stack || !(*stack))
         return ;
@@ -31,7 +31,7 @@ void    free_stack(t_stack **stack)
 
 /* Frees both stacks, writes error and exits*/
 
-void	ft_error(t_stack **stack_a, t_stack **stack_b)
+void    ft_error(t_stack **stack_a, t_stack **stack_b)
 {
     if (stack_a == NULL || *stack_a != NULL)
         free_stack(stack_a);
@@ -52,17 +52,17 @@ int ft_abs_nbr(int nbr)
 
 /* Checks if char is + or - */
 
-int	ft_issign(char c)
+int ft_issign(char c)
 {
     return (c == '+' || c == '-');
 }
 
 /* Compares two strings of digits if they are the same*/
 
-int	nbstr_cmp(const char *s1, const char *s2)
+int nbstr_cmp(const char *s1, const char *s2)
 {
-    int	i;
-    int	j;
+    int i;
+    int j;
 
     i = 0;
     j = i;

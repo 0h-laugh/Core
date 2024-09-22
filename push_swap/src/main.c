@@ -6,17 +6,17 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:46:40 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 18:39:11 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:07:24 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-    t_stack	*stack_a;
-    t_stack	*stack_b;
-    int		size;
+    t_stack *stack_a;
+    t_stack *stack_b;
+    int     size;
 
     if (ac < 2)
         return (0);

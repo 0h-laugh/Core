@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:32:46 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 14:32:51 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:09:21 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 /* General reverse rotate - Bottom element of stack is sent to the top */
 
-static void	reverse_rotate(t_stack **stack)
+static void reverse_rotate(t_stack **stack)
 {
-    t_stack	*tmp;
-    t_stack	*tail;
-    t_stack	*before_tail;
+    t_stack *tmp;
+    t_stack *tail;
+    t_stack *before_tail;
 
     tail = ft_stack_last(*stack);
     before_tail = ft_stack_before_last(*stack);

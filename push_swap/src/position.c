@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:05:06 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 18:16:37 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:08:32 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 /* Assigns position for every element in stack from top to bottom in ascending order */
 
-static void	get_position(t_stack **stack)
+static void get_position(t_stack **stack)
 {
-    t_stack	*tmp;
-    int		i;
+    t_stack *tmp;
+    int     i;
 
     tmp = *stack;
     i = 0;
@@ -31,9 +31,9 @@ static void	get_position(t_stack **stack)
 
 /* Looks for best targer position in stack_a for given index of element in stack_b */
 
-static int	get_target(t_stack **stack_a, int index, int tar_index, int tar_pos)
+static int  get_target(t_stack **stack_a, int index, int tar_index, int tar_pos)
 {
-    t_stack	*tmp_a;
+    t_stack *tmp_a;
 
     tmp_a = *stack_a;
     while (tmp_a)
@@ -62,11 +62,11 @@ static int	get_target(t_stack **stack_a, int index, int tar_index, int tar_pos)
 
 /* Gets position of value with lowest index in stack */
 
-int	get_lowest_index_position(t_stack **stack)
+int get_lowest_index_position(t_stack **stack)
 {
-    t_stack	*tmp;
-    int		lowest_index;
-    int		lowest_pos;
+    t_stack *tmp;
+    int     lowest_index;
+    int     lowest_pos;
 
     tmp = *stack;
     lowest_index = INT_MAX;
@@ -86,10 +86,10 @@ int	get_lowest_index_position(t_stack **stack)
 
 /* Assigns target position in stack_a for it's every element for cost calculation */
 
-void	get_target_position(t_stack **a, t_stack **b)
+void    get_target_position(t_stack **a, t_stack **b)
 {
-    t_stack	*tmp_b;
-    int		target_pos;
+    t_stack *tmp_b;
+    int     target_pos;
 
     tmp_b = *b;
     get_position(a);

@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:44:20 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 17:30:01 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:11:46 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_stack *ft_stack_before_last(t_stack *stack)
 
 /* Adds element to the bottom of stack */
 
-void	stack_add_bottom(t_stack **stack, t_stack *new)
+void    stack_add_bottom(t_stack **stack, t_stack *new)
 {
-    t_stack	*tail;
+    t_stack *tail;
 
     if (!new)
         return ;
@@ -49,9 +49,9 @@ void	stack_add_bottom(t_stack **stack, t_stack *new)
 
 /* Returns size of stack */
 
-int	get_stack_size(t_stack	*stack)
+int get_stack_size(t_stack	*stack)
 {
-    int	size;
+    int size;
 
     size = 0;
     if (!stack)
@@ -68,9 +68,9 @@ int	get_stack_size(t_stack	*stack)
 
 void    assign_index(t_stack *stack_a, int size)
 {
-    t_stack	*ptr;
-    t_stack	*highest;
-    int		data;
+    t_stack *ptr;
+    t_stack *highest;
+    int     data;
 
     while (--size > 0)
     {

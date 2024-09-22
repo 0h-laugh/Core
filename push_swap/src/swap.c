@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:48:23 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 15:04:17 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:12:03 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* General swap - swaps 2 elements on top of the stack (if present) */
 
-static void	swap(t_stack *stack)
+static void swap(t_stack *stack)
 {
     int tmp;
 

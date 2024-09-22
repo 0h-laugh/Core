@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:41:06 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 18:58:58 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:11:09 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /* Creates new stack element with provided value and returns it */
 
-t_stack    *new_elem(int value)
+t_stack	*new_elem(int value)
 {
-    t_stack    *new;
+    t_stack	*new;
 
     new = malloc(sizeof * new);
     if (!new)
@@ -33,11 +33,11 @@ t_stack    *new_elem(int value)
 
 /* Fills stack_a with starting values */
 
-t_stack *fill_with_values(int ac, char **av)
+t_stack	*fill_with_values(int ac, char **av)
 {
-    t_stack *stack_a;
-    long int    nbr;
-    int         i;
+    t_stack	*stack_a;
+    long int	nbr;
+    int			i;
 
     stack_a = NULL;
     nbr = 0;
@@ -57,7 +57,7 @@ t_stack *fill_with_values(int ac, char **av)
 }
 
 /* Calculates cost of moving every element in stack_b to correct position in stack_a */
-void    calculate_cost(t_stack **stack_a, t_stack **stack_b)
+void	calculate_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
@@ -82,7 +82,7 @@ void    calculate_cost(t_stack **stack_a, t_stack **stack_b)
 
 /* Finds lowest cost element from stack_b to move to stack_a in correct postition */
 
-void    do_cheapest(t_stack **stack_a, t_stack **stack_b)
+void	do_cheapest(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 	int		cheapest;

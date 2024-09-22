@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:50:39 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 17:50:43 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:10:22 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /* Returns highest index from stack */
 
-static int	find_highest_index(t_stack *stack)
+static int  find_highest_index(t_stack *stack)
 {
-    int		index;
+    int index;
 
     index = stack->index;
     while (stack)
@@ -30,11 +30,11 @@ static int	find_highest_index(t_stack *stack)
 
 /* Pushes all elements from stack_a to stack_b leaving last 3 */
 
-static void	push_without_three(t_stack **stack_a, t_stack **stack_b)
+static void push_without_three(t_stack **stack_a, t_stack **stack_b)
 {
-    int	stack_size;
-    int	pushed;
-    int	i;
+    int stack_size;
+    int pushed;
+    int i;
 
     stack_size = get_stack_size(*stack_a);
     pushed = 0;
@@ -59,10 +59,10 @@ static void	push_without_three(t_stack **stack_a, t_stack **stack_b)
 
 /* Pushes lowest value to the top of stack */
 
-static void	shift_stack(t_stack **stack_a)
+static void shift_stack(t_stack **stack_a)
 {
-    int	lowest_pos;
-    int	stack_size;
+    int lowest_pos;
+    int stack_size;
 
     stack_size = get_stack_size(*stack_a);
     lowest_pos = get_lowest_index_position(stack_a);
@@ -86,9 +86,9 @@ static void	shift_stack(t_stack **stack_a)
 
 /* Effective sorting of stack of 3 by index */
 
-void	tiny_sort(t_stack **stack)
+void    tiny_sort(t_stack **stack)
 {
-    int		highest;
+    int highest;
 
     if (ft_issorted(*stack))
         return ;
@@ -103,7 +103,7 @@ void	tiny_sort(t_stack **stack)
 
 /* Turk sort for stacks larger than 3, it sorts number by 3 and puts them in right order calculating lowest cost */
 
-void	turk_sort(t_stack **stack_a, t_stack **stack_b)
+void    turk_sort(t_stack **stack_a, t_stack **stack_b)
 {
     push_without_three(stack_a, stack_b);
     tiny_sort(stack_a);

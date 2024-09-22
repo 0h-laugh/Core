@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:32:07 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 15:32:49 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:09:39 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* General rotate - Top element of stack is sent to the bottom */
 
-static void	rotate(t_stack **stack)
+static void rotate(t_stack **stack)
 {
     t_stack *tmp;
     t_stack *tail;
