@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:33:11 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 19:07:07 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/22 19:33:36 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ static int  is_number(char *av)
 
 /* Checks for duplicates */
 
-static int  is_duplicate(char **av)
+static int	is_duplicate(char **av)
 {
-    int i;
-    int j;
+    int	i;
+    int	j;
 
-    i = 1;
+    i = 0;
     while (av[i])
     {
-        j = 1;
+        j = 0;
         while (av[j])
         {
             if (j != i && nbstr_cmp(av[i], av[j]) == 0)
