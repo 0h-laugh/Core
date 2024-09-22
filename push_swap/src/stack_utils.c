@@ -3,107 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojastrze <ojastrze@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 1970/01/01 01:00:00 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/04 21:18:13 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/09/22 15:44:20 by olaf              #+#    #+#             */
+/*   Updated: 2024/09/22 17:30:01 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../includes/push_swap.h"
 
-t_stack	*init_node(int number)
+/* Returns last element of stack */
+
+t_stack *ft_stack_last(t_stack *stack)
 {
-	t_stack *new_node;
-
-	new_node = malloc(sizeof(t_stack));
-	if (!new_node)
-		ft_error();
-	new_node->content = malloc(sizeof(int));
-	if (!new_node->content)
-	{
-		free(new_node);
-		ft_error();
-	}
-	*(int *)(new_node->content) = number;
-	new_node->next = NULL;
-	return (new_node);
+    while (stack && stack->next != NULL)
+        stack = stack->next;
+    return (stack);
 }
 
-t_stack	*init_one(char *arg, t_stack *stack_a, int i)
-{
-	char        **split_args;
-	int         j;
-	long int	number;
+/* Returns pre-last element of stack */
 
-	split_args = ft_split(arg, ' ');
-	j = 0;
-	while (split_args[j])
-	{
-		number = ft_atoi(split_args[j]);
-		if (number > INT_MAX || number < INT_MIN)
-			ft_error();
-		if (i == 1 && j == 0)
-			stack_a = init_node((int)number);
-		else
-			ft_lstadd_back(&stack_a, init_node((int)number));
-		free(split_args[j]);
-		j++;
-	}
-	free(split_args);
-	return (stack_a);
+t_stack *ft_stack_before_last(t_stack *stack)
+{
+    while (stack && stack->next && stack->next->next != NULL)
+        stack = stack->next;
+    return (stack);
 }
 
-t_stack	*init_separate(char *arg, t_stack *stack_a, int i)
-{
-	long int	number;
+/* Adds element to the bottom of stack */
 
-	number = ft_atoi(arg);
-	if (number > INT_MAX || number < INT_MIN)
-		ft_error();
-	if (i == 1)
-		stack_a = init_node((int)number);
-	else
-		ft_lstadd_back(&stack_a, init_node((int)number));
-	return (stack_a);
+void	stack_add_bottom(t_stack **stack, t_stack *new)
+{
+    t_stack	*tail;
+
+    if (!new)
+        return ;
+    if (!*stack)
+    {
+        *stack = new;
+        return ;
+    }
+    tail = ft_stack_last(*stack);
+    tail->next = new;
 }
 
-//This function checks if stack is sorted
-int	is_sorted(t_stack *stack)
+/* Returns size of stack */
+
+int	get_stack_size(t_stack	*stack)
 {
-	while (stack && stack->next)
-	{
-		if (*(int *)(stack->content) > *(int *)(stack->next->content))
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
+    int	size;
+
+    size = 0;
+    if (!stack)
+        return (0);
+    while (stack)
+    {
+        stack = stack->next;
+        size++;
+    }
+    return (size);
 }
 
-void	print_stacks(t_stack *stack_a, t_stack *stack_b)
+/* Assign index to each value in stack from highest to lowest*/
+
+void    assign_index(t_stack *stack_a, int size)
 {
-	t_stack	*current_a;
-	t_stack	*current_b;
+    t_stack	*ptr;
+    t_stack	*highest;
+    int		data;
 
-	current_a = stack_a;
-	current_b = stack_b;
-	ft_printf("Stack A\tStack B\n");
-	while (current_a != NULL || current_b != NULL)
-	{
-		if (current_a != NULL)
-		{
-			ft_printf("%d\t", *(int *)current_a->content);
-			current_a = current_a->next;
-		}
-		else
-			ft_printf(" \t");
-
-		if (current_b != NULL)
-		{
-			ft_printf("%d\n", *(int *)current_b->content);
-			current_b = current_b->next;
-		}
-		else
-			ft_printf(" \n");
-	}
+    while (--size > 0)
+    {
+        ptr = stack_a;
+        data = INT_MIN;
+        highest = NULL;
+        while (ptr)
+        {
+            if (ptr->data == INT_MIN && ptr->index == 0)
+                ptr->index = 1;
+            if (ptr->data > data && ptr->index == 0)
+            {
+                data = ptr->data;
+                highest = ptr;
+                ptr = stack_a;
+            }
+            else
+                ptr = ptr->next;
+        }
+        if (highest != NULL)
+            highest->index = size;
+    }
 }

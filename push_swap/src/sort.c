@@ -3,101 +3,116 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojastrze <ojastrze@stundent.42warsaw.pl>   +#+  +:+       +#+        */
+/*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 18:29:19 by ojastrze          #+#    #+#             */
-/*   Updated: 2024/07/09 13:15:08 by ojastrze         ###   ########.fr       */
+/*   Created: 2024/09/22 17:50:39 by olaf              #+#    #+#             */
+/*   Updated: 2024/09/22 17:50:43 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ft_sort_int_tab(int *tab, int size)
+/* Returns highest index from stack */
+
+static int	find_highest_index(t_stack *stack)
 {
-	int	i;
-	int	j;
-	int	key;
+    int		index;
 
-	i = 1;
-	while (i < size)
-	{
-		key = tab[i];
-		j = i - 1;
-		while (j >= 0 && tab[j] > key)
-		{
-			tab[j + 1] = tab[j];
-			j--;
-		}
-		tab[j + 1] = key;
-		i++;
-	}
+    index = stack->index;
+    while (stack)
+    {
+        if (stack->index > index)
+            index = stack->index;
+        stack = stack->next;
+    }
+    return (index);
 }
 
-int get_pivot(t_stack *stack, int size)
-{
-	int *pivot_array;
-	int i;
-	t_stack *temp;
+/* Pushes all elements from stack_a to stack_b leaving last 3 */
 
-	pivot_array = (int *)malloc(sizeof(int) * size);
-	if (!pivot_array)
-		ft_error();
-	i = 0;
-	temp = stack;
-	while (i < size)
-	{
-		pivot_array[i++] = *((int *)temp->content);
-		temp = temp->next;
-	}
-	ft_sort_int_tab(pivot_array, size);
-	i = pivot_array[size / 2];
-	free(pivot_array);
-	return (i);
+static void	push_without_three(t_stack **stack_a, t_stack **stack_b)
+{
+    int	stack_size;
+    int	pushed;
+    int	i;
+
+    stack_size = get_stack_size(*stack_a);
+    pushed = 0;
+    i = 0;
+    while (stack_size > 6 && i < stack_size && pushed < stack_size / 2)
+    {
+        if ((*stack_a)->index <= stack_size / 2)
+        {
+            pb(stack_a, stack_b);
+            pushed++;
+        }
+        else
+            ra(stack_a);
+        i++;
+    }
+    while (stack_size - pushed > 3)
+    {
+        pb(stack_a, stack_b);
+        pushed++;
+    }
 }
 
-void partition(t_stack **stack_a, t_stack **stack_b, int pivot, int size)
-{
-	int i;
-	int pushed;
+/* Pushes lowest value to the top of stack */
 
-	i = 0;
-	pushed = 0;
-	while (i < size)
-	{
-		if (*((int *)(*stack_a)->content) < pivot)
-		{
-			push(stack_a, stack_b);
-			pushed++;
-		}
-		else
-			rotate(stack_a);
-		i++;
-	}
-	while (pushed--)
-		reverse_rotate(stack_b);
+static void	shift_stack(t_stack **stack_a)
+{
+    int	lowest_pos;
+    int	stack_size;
+
+    stack_size = get_stack_size(*stack_a);
+    lowest_pos = get_lowest_index_position(stack_a);
+    if (lowest_pos > stack_size / 2)
+    {
+        while (lowest_pos < stack_size)
+        {
+            rra(stack_a);
+            lowest_pos++;
+        }
+    }
+    else
+    {
+        while (lowest_pos > 0)
+        {
+            ra(stack_a);
+            lowest_pos--;
+        }
+    }
 }
 
-void quick_sort_util(t_stack **stack_a, t_stack **stack_b, int size)
+/* Effective sorting of stack of 3 by index */
+
+void	tiny_sort(t_stack **stack)
 {
-	int pivot;
+    int		highest;
 
-	if (size < 2)
-		return;
-	pivot = get_pivot(*stack_a, size);
-	partition(stack_a, stack_b, pivot, size);
-
-	// Recursively sort both parts
-	quick_sort_util(stack_a, stack_b, size / 2);
-	quick_sort_util(stack_b, stack_a, size - (size / 2)); // corrected to sort remaining elements
-
-	while (*stack_b)
-		push(stack_b, stack_a);
+    if (ft_issorted(*stack))
+        return ;
+    highest = find_highest_index(*stack);
+    if ((*stack)->index == highest)
+        ra(stack);
+    else if ((*stack)->next->index == highest)
+        rra(stack);
+    if ((*stack)->index > (*stack)->next->index)
+        sa(stack);
 }
 
-void quick_sort(t_stack **stack_a, t_stack **stack_b)
-{
-	int size;
+/* Turk sort for stacks larger than 3, it sorts number by 3 and puts them in right order calculating lowest cost */
 
-	size = ft_lstsize(*stack_a);
-	quick_sort_util(stack_a, stack_b, size);
+void	turk_sort(t_stack **stack_a, t_stack **stack_b)
+{
+    push_without_three(stack_a, stack_b);
+    tiny_sort(stack_a);
+    while (*stack_b)
+    {
+        get_target_position(stack_a, stack_b);
+        calculate_cost(stack_a, stack_b);
+        do_cheapest(stack_a, stack_b);
+    }
+    if (!ft_issorted(*stack_a))
+        shift_stack(stack_a);
 }
