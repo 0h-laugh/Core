@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:46:40 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/29 14:31:34 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/29 14:56:18 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char    **split_args(int ac, char **av, int *new_ac)
     return (args);
 }
 
-static void free_split(char **args, int ac, char **av)
+void free_split(char **args, int ac, char **av)
 {
     int i;
 
@@ -55,7 +55,7 @@ int main(int ac, char **av)
     if (ac < 2)
         return (0);
     if (!input_check(args))
-        ft_error(NULL, NULL);
+        ft_error(NULL, NULL, args, ac, av);
     stack_b = NULL;
     stack_a = fill_with_values(ac, args);
     stack_size = get_stack_size(stack_a);

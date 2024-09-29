@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 18:08:23 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 19:06:22 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/29 14:57:38 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ void    rrr(t_stack **stack_a, t_stack **stack_b);
 
 /* Utils */
 void    free_stack(t_stack **stack);
-void    ft_error(t_stack **stack_a, t_stack **stack_b);
+void    ft_error(t_stack **stack_a, t_stack **stack_b, char **args, int ac, char **av);
 int     ft_abs_nbr(int nbr);
 int     ft_issign(char c);
 int     nbstr_cmp(const char *s1, const char *s2);
+void    free_split(char **args, int ac, char **av);
 
 # endif
 

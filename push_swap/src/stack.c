@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:41:06 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/29 14:31:05 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/29 14:55:47 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_stack *fill_with_values(int ac, char **av)
 	{
 		nbr = ft_atoi(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			ft_error(&stack_a, NULL);
+			ft_error(&stack_a, NULL, av, ac, av);
 		stack_add_bottom(&stack_a, new_elem((int)nbr));
 		i++;
 	}
