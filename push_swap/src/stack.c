@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:41:06 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/22 19:11:09 by olaf             ###   ########.fr       */
+/*   Updated: 2024/09/29 14:31:05 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,25 @@ t_stack	*new_elem(int value)
 
 /* Fills stack_a with starting values */
 
-t_stack	*fill_with_values(int ac, char **av)
+t_stack *fill_with_values(int ac, char **av)
 {
-    t_stack	*stack_a;
-    long int	nbr;
-    int			i;
+	t_stack *stack_a;
+	long int nbr;
+	int i;
 
-    stack_a = NULL;
-    nbr = 0;
-    i = 1;
-    while (i < ac)
-    {
-        nbr = ft_atoi(av[i]);
-        if (nbr > INT_MAX || nbr < INT_MIN)
-            ft_error(&stack_a, NULL);
-        if (i == 1)
-            stack_a = new_elem((int)nbr);
-        else
-            stack_add_bottom(&stack_a, new_elem((int)nbr));
-        i++;
-    }
-    return (stack_a);
+	stack_a = NULL;
+	nbr = 0;
+	i = 0;
+	while (i < ac)
+	{
+		nbr = ft_atoi(av[i]);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			ft_error(&stack_a, NULL);
+		stack_add_bottom(&stack_a, new_elem((int)nbr));
+		i++;
+	}
+
+	return (stack_a);
 }
 
 /* Calculates cost of moving every element in stack_b to correct position in stack_a */
