@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:46:40 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/29 14:56:18 by olaf             ###   ########.fr       */
+/*   Updated: 2024/10/05 11:53:30 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ static char    **split_args(int ac, char **av, int *new_ac)
     return (args);
 }
 
-void free_split(char **args, int ac, char **av)
+void free_split(char **args, char **av)
 {
     int i;
 
-    if (args != av + 1)
-    {
-        i = 0;
-        while (i < ac)
-            free(args[i++]);
-        free(args);
-    }
+    if (args == av + 1)
+        return;
+
+    i = 0;
+    while (args[i])
+        free(args[i++]);
+    free(args);
 }
 
 int main(int ac, char **av)
@@ -55,7 +55,7 @@ int main(int ac, char **av)
     if (ac < 2)
         return (0);
     if (!input_check(args))
-        ft_error(NULL, NULL, args, ac, av);
+        ft_error(NULL, NULL, args, av);
     stack_b = NULL;
     stack_a = fill_with_values(ac, args);
     stack_size = get_stack_size(stack_a);
@@ -68,6 +68,6 @@ int main(int ac, char **av)
         turk_sort(&stack_a, &stack_b);
     free_stack(&stack_a);
     free_stack(&stack_b);
-    free_split(args, ac, av);
+    free_split(args, av);
     return (0);
 }

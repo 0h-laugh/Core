@@ -6,7 +6,7 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:06:20 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/29 14:55:15 by olaf             ###   ########.fr       */
+/*   Updated: 2024/10/05 11:53:27 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ void    free_stack(t_stack **stack)
 
 /* Frees both stacks, writes error and exits*/
 
-void    ft_error(t_stack **stack_a, t_stack **stack_b, char **args, int ac, char **av)
+void ft_error(t_stack **stack_a, t_stack **stack_b, char **args, char **av)
 {
-    if (stack_a == NULL || *stack_a != NULL)
+    if (stack_a != NULL)
         free_stack(stack_a);
-    if (stack_b == NULL || *stack_b != NULL)
+    if (stack_b != NULL)
         free_stack(stack_b);
     if (args != NULL)
-        free_split(args, ac, av);
+        free_split(args, av);
     write(2, "Error\n", 6);
-    exit (1);
+    exit(1);
 }
 
 /* Returns absolute value of given number */

@@ -6,11 +6,35 @@
 /*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:41:06 by olaf              #+#    #+#             */
-/*   Updated: 2024/09/29 14:55:47 by olaf             ###   ########.fr       */
+/*   Updated: 2024/10/05 11:53:23 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+long int	ft_atol(const char *str)
+{
+	long int	nb;
+	int			isneg;
+	int			i;
+
+	nb = 0;
+	isneg = 1;
+	i = 0;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
+	{
+		isneg *= -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		nb = (nb * 10) + (str[i] - '0');
+		i++;
+	}
+	return (nb * isneg);
+}
 
 /* Creates new stack element with provided value and returns it */
 
@@ -44,9 +68,9 @@ t_stack *fill_with_values(int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		nbr = ft_atoi(av[i]);
+		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			ft_error(&stack_a, NULL, av, ac, av);
+			ft_error(&stack_a, NULL, av, av);
 		stack_add_bottom(&stack_a, new_elem((int)nbr));
 		i++;
 	}
