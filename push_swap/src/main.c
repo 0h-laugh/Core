@@ -57,7 +57,7 @@ int main(int ac, char **av)
     if (!input_check(args))
         ft_error(NULL, NULL, args, av);
     stack_b = NULL;
-    stack_a = fill_with_values(ac, args);
+    stack_a = fill_with_values(ac, args, av);
     stack_size = get_stack_size(stack_a);
     assign_index(stack_a, stack_size + 1);
     if (stack_size == 2 && !ft_issorted(stack_a))

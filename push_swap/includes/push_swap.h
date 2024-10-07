@@ -33,7 +33,7 @@ typedef struct s_stack
 
 /* Initialization */
 t_stack	*new_elem(int value);
-t_stack	*fill_with_values(int ac, char **av);
+t_stack	*fill_with_values(int ac,char **args, char **av);
 
 /* Input check */
 int	ft_issorted(t_stack *stack);
