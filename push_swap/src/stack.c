@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-long int	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	long int	nb;
 	int			isneg;
@@ -40,43 +40,43 @@ long int	ft_atol(const char *str)
 
 t_stack	*new_elem(int value)
 {
-    t_stack	*new;
+	t_stack	*new;
 
-    new = malloc(sizeof * new);
-    if (!new)
-        return (NULL);
-    new->data = value;
-    new->index = 0;
-    new->position = -1;
-    new->target = -1;
-    new->cost_a = -1;
-    new->cost_b = -1;
-    new->next = NULL;
-    return (new);
+	new = malloc(sizeof * new);
+	if (!new)
+		return (NULL);
+	new->data = value;
+	new->index = 0;
+	new->position = -1;
+	new->target = -1;
+	new->cost_a = -1;
+	new->cost_b = -1;
+	new->next = NULL;
+	return (new);
 }
 
 /* Fills stack_a with starting values */
 
-t_stack *fill_with_values(int ac, char **args, char **av)
+t_stack	*fill_with_values(int ac, char **args, char **av)
 {
-    t_stack *stack_a;
-    long int nbr;
-    int i;
+	t_stack		*stack_a;
+	int			i;
+	long int	nbr;
 
-    stack_a = NULL;
-    i = 0;
-    while (i < ac)
-    {
-        nbr = ft_atol(args[i]);
-        if (nbr > INT_MAX || nbr < INT_MIN)
-            ft_error(&stack_a, NULL, args, av);
-        stack_add_bottom(&stack_a, new_elem((int)nbr));
-        i++;
-    }
-    return (stack_a);
+	stack_a = NULL;
+	i = 0;
+	while (i < ac)
+	{
+		nbr = ft_atol(args[i]);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			ft_error(&stack_a, NULL, args, av);
+		stack_add_bottom(&stack_a, new_elem((int)nbr));
+		i++;
+	}
+	return (stack_a);
 }
 
-/* Calculates cost of moving every element in stack_b to correct position in stack_a */
+/* Calculates cost of moving elements in stack_b to correct pos in stack_a */
 void	calculate_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
@@ -100,7 +100,7 @@ void	calculate_cost(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-/* Finds lowest cost element from stack_b to move to stack_a in correct postition */
+/* Finds lowest cost elem from stack_b to move to stack_a in correct pos */
 
 void	do_cheapest(t_stack **stack_a, t_stack **stack_b)
 {
@@ -113,7 +113,8 @@ void	do_cheapest(t_stack **stack_a, t_stack **stack_b)
 	cheapest = INT_MAX;
 	while (tmp)
 	{
-		if (ft_abs_nbr(tmp->cost_a) + ft_abs_nbr(tmp->cost_b) < ft_abs_nbr(cheapest))
+		if (ft_abs_nbr(tmp->cost_a) + ft_abs_nbr(tmp->cost_b) < ft_abs_nbr
+			(cheapest))
 		{
 			cheapest = ft_abs_nbr(tmp->cost_b) + ft_abs_nbr(tmp->cost_a);
 			cost_a = tmp->cost_a;

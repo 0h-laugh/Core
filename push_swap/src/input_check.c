@@ -14,86 +14,86 @@
 
 /* Checks if provided arg is valid number */
 
-static int  is_number(char *av)
+static int	is_number(char *av)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (ft_issign(av[i]) && av[i + 1] != '\0')
-        i++;
-    while (av[i] && ft_isdigit(av[i]))
-        i++;
-    if (av[i] != '\0' && !ft_isdigit(av[i]))
-        return (0);
-    return (1);
+	i = 0;
+	if (ft_issign(av[i]) && av[i + 1] != '\0')
+		i++;
+	while (av[i] && ft_isdigit(av[i]))
+		i++;
+	if (av[i] != '\0' && !ft_isdigit(av[i]))
+		return (0);
+	return (1);
 }
 
 /* Checks for duplicates */
 
 static int	is_duplicate(char **av)
 {
-    int	i;
-    int	j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (av[i])
-    {
-        j = 0;
-        while (av[j])
-        {
-            if (j != i && nbstr_cmp(av[i], av[j]) == 0)
-                return (1);
-            j++;
-        }
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (av[i])
+	{
+		j = 0;
+		while (av[j])
+		{
+			if (j != i && nbstr_cmp(av[i], av[j]) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 /* Checks if arg is 0 */
 
-static int  is_zero(char *av)
+static int	is_zero(char *av)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (ft_issign(av[i]))
-        i++;
-    while (av[i] && av[i] == '0')
-        i++;
-    if (av[i] != '\0')
-        return (0);
-    return (1);
+	i = 0;
+	if (ft_issign(av[i]))
+		i++;
+	while (av[i] && av[i] == '0')
+		i++;
+	if (av[i] != '\0')
+		return (0);
+	return (1);
 }
 
-int ft_issorted(t_stack *stack)
+int	ft_issorted(t_stack *stack)
 {
-    while (stack->next != NULL)
-    {
-        if (stack->data > stack->next->data)
-            return (0);
-        stack = stack->next;
-    }
-    return (1);
+	while (stack->next != NULL)
+	{
+		if (stack->data > stack->next->data)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
-int input_check(char **av)
+int	input_check(char **av)
 {
-    int i;
-    int nb_zeros;
+	int	i;
+	int	nb_zeros;
 
-    nb_zeros = 0;
-    i = 1;
-    while (av[i])
-    {
-        if (!is_number(av[i]))
-            return (0);
-        nb_zeros += is_zero(av[i]);
-        i++;
-    }
-    if (nb_zeros > 1)
-        return (0);
-    if (is_duplicate(av))
-        return (0);
-    return (1);
+	nb_zeros = 0;
+	i = 1;
+	while (av[i])
+	{
+		if (!is_number(av[i]))
+			return (0);
+		nb_zeros += is_zero(av[i]);
+		i++;
+	}
+	if (nb_zeros > 1)
+		return (0);
+	if (is_duplicate(av))
+		return (0);
+	return (1);
 }
