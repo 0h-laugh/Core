@@ -59,16 +59,30 @@ void	render_background(t_img *img, int color)
 	}
 }
 
-void	render_instructions(t_data *data, int color)
+t_img	*create_image_buffer(t_data *data)
 {
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 30, 50,
-		color, "Translate: Up, Down, Left, Right");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 30, 70,
-		color, "Rotate: W, A, S, D");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 30, 110,
-		color, "Reset Isometric View: R");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 30, 130,
-		color, "Top View: T");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 30, 150,
-		color, "Animate: Space");
+    t_img	*img;
+
+    img = malloc(sizeof(t_img));
+    if (!img)
+        return (NULL);
+    img->mlx_img = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
+    img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->line_len, &img->endian);
+    return (img);
+}
+
+void	render_to_window(t_data *data)
+{
+    t_img	*img;
+
+    img = create_image_buffer(data);
+    if (!img)
+    {
+        write(2, "Error: Could not create image buffer\n", 35);
+        return ;
+    }
+    draw_map(img, data->map, (t_point){0, 0, 0, 0});
+    mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img->mlx_img, 0, 0);
+    mlx_destroy_image(data->mlx_ptr, img->mlx_img);
+    free(img);
 }

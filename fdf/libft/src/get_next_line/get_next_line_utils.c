@@ -12,30 +12,26 @@
 
 #include "get_next_line.h"
 
-char	*ft_gstrjoin(char *line, char *buffer)
+char    *ft_gstrjoin(char *line, char *buffer)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+    size_t  line_len;
+    size_t  buffer_len;
+    char    *str;
 
-	if (!line)
-	{
-		line = (char *)malloc(1 * sizeof(char));
-		line[0] = '\0';
-	}
-	if (!line || !buffer)
-		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buffer)) + 1));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	j = 0;
-	if (line)
-		while (line[++i] != '\0')
-			str[i] = line[i];
-	while (buffer[j] != '\0')
-		str[i++] = buffer[j++];
-	str[ft_strlen(line) + ft_strlen(buffer)] = '\0';
-	free(line);
-	return (str);
+    if (!line)
+    {
+        line = (char *)malloc(1);
+        if (!line)
+            return (NULL);
+        line[0] = '\0';
+    }
+    line_len = ft_strlen(line);
+    buffer_len = ft_strlen(buffer);
+    str = malloc(line_len + buffer_len + 1);
+    if (!str)
+        return (NULL);
+    ft_memcpy(str, line, line_len);
+    ft_memcpy(str + line_len, buffer, buffer_len + 1);
+    free(line);
+    return (str);
 }

@@ -47,7 +47,7 @@ void	fill_map(t_data *data, t_map *map)
 		j = 0;
 		while (j < map->x_dim)
 		{	
-			cur = map->point_arr + i * map->x_dim + j;
+			cur = map->point_arr + (i * map->x_dim) + j;
 			*cur = point;
 			cur->z = ft_atoi(data->parsed_file[i * map->x_dim + j]);
 			set_height_range(map, cur);

@@ -22,10 +22,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	if (parse_file(&data, av[1]) == -1)
-		return (-1);
+		return (1);
 	generate_map(&data);
 	generate_iso_view(data.map);
 	if (start_mlx(&data) == -1)
-		return (-1);
+		return (1);
+	render_to_window(&data);
 	return (0);
 }
