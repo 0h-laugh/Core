@@ -21,7 +21,7 @@ char	*ft_read(int fd, char *line)
 	if (!buffer)
 		return (NULL);
 	bytes = 1;
-	while (bytes != 0 && !ft_strchr(line, '\n'))
+	while (bytes != 0 && (line == NULL || !ft_strchr(line, '\n')))
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
