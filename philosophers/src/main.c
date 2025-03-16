@@ -3,80 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olaf <olaf@student.1337.ma>                +#+  +:+       +#+        */
+/*   By: olaf <ojastrze@student.42warsaw.pl>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 19:58:11 by olaf              #+#    #+#             */
-/*   Updated: 2025/03/15 20:48:18 by olaf             ###   ########.fr       */
+/*   Created: 2025/03/16 18:00:10 by olaf              #+#    #+#             */
+/*   Updated: 2025/03/16 18:05:27 by olaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int main(void)
+void	*philosopher_routine(void *arg)
 {
-    char *lyrics[] = {
-        "[Intro]",
-        "Are you alright?",
-        "I'm alright, I'm quite alright",
-        "And my money's right",
-        "(8) Yeah",
-        "Countin' them bands all way to the top 'til they be fallin' over",
-        "Countin' them bands on my way to the top 'til it's fallin' over",
-        "",
-        "[Chorus]",
-        "I don't really care if you cry",
-        "On the real, you should've never lied",
-        "Should've saw the way she looked me in my eyes",
-        "She said, \"Baby, I am not afraid to die\"",
-        "Push me to the edge",
-        "All my friends are dead, push me to the edge",
-        "All my friends are dead, push me to the edge",
-        "All my friends are dead, push me to the edge",
-        "",
-        "[Verse 1]",
-        "Phantom that's all red, inside all white",
-        "Like something you ride a sled down, I just want that head",
-        "My bracelet Hermes, her bracelet Hermes now",
-        "Everybody got the same swag now",
-        "Watch the way that I tear it down",
-        "Stacking my bands all the way to the top",
-        "All the way till my bands falling over",
-        "Every time that you leave your spot",
-        "Your girlfriend call me like, \"Come on over\"",
-        "I like the way that she treat me, gon' leave you, won't leave me, I call it that Casanova",
-        "She say I'm insane, yeah, I might blow my brain out",
-        "Xanny, help the pain, yeah",
-        "Please, Xanny, make it go away",
-        "I'm committed, not addicted, but it keep control of me",
-        "All the pain, now I can't feel it, I swear that it's slowing me, yeah",
-        "",
-        "[Chorus]",
-        "I don't really care if you cry",
-        "On the real, you should've never lied",
-        "Saw the way she looked me in my eyes",
-        "She said, \"I am not afraid to die\"",
-        "Yeah, all my friends are dead",
-        "Push me to the edge, yeah, all my friends are dead",
-        "Yeah, ooh, push me to the edge",
-        "All my friends are dead, yeah, all my friends are dead, yeah",
-        NULL
-    };
+	t_philosopher	*philo;
 
-    int i = 0;
-    while (lyrics[i])
-    {
-        printf("%s\n", lyrics[i]);   // Wypisanie tekstu w terminalu
-        fflush(stdout);
+	philo = (t_philosopher *)arg;
+	while (1)
+	{
+		pthread_mutex_lock(&philo->sim->death_mutex);
+		if (philo->sim->death_flag == 1)
+		{
+			pthread_mutex_unlock(&philo->sim->death_mutex);
+			pthread_exit(NULL);
+		}
+		pthread_mutex_unlock(&philo->sim->death_mutex);
+		print_action(philo, "is thinking");
+		pick_up_forks(philo);
+		pthread_mutex_lock(&philo->meal_mutex);
+		philo->last_meal_time = cur_time_ms();
+		pthread_mutex_unlock(&philo->meal_mutex);
+		print_action(philo, "is eating");
+		usleep(philo->sim->time_to_eat * 1000);
+		philo->times_eaten++;
+		release_forks(philo);
+		print_action(philo, "is sleeping");
+		usleep(philo->sim->time_to_sleep * 1000);
+	}
+	return (NULL);
+}
 
-        // Odczytanie na głos - `espeak` dla Linuxa, `say` dla macOS
-        char command[256];
-        snprintf(command, sizeof(command), "espeak \"%s\" --stdout | aplay", lyrics[i]);  // Linux
-        // snprintf(command, sizeof(command), "say \"%s\"", lyrics[i]); // macOS (odkomentuj, jeśli masz macOS)
-        system(command);
+void	start_simulation(t_simulation *sim)
+{
+	pthread_t	*threads;
+	pthread_t	supervisor_thread;
+	int			i;	
 
-        sleep(1);  // Opóźnienie między linijkami
-        i++;
-    }
+	threads = malloc(sizeof(pthread_t) * sim->number_of_philosophers);
+	if (!threads)
+		print_error("Failed to allocate memory for threads");
+	if (pthread_create(&supervisor_thread, NULL, supervisor_routine, sim) != 0)
+		print_error("Failed to create supervisor thread");
+	i = 0;
+	while (i < sim->number_of_philosophers)
+	{
+		if (pthread_create(&threads[i], NULL
+				, philosopher_routine, &sim->philosophers[i]) != 0)
+			print_error("Failed to create philosopher thread");
+		usleep(10);
+		i++;
+	}
+	i = 0;
+	while (i < sim->number_of_philosophers)
+		pthread_join(threads[i++], NULL);
+	pthread_join(supervisor_thread, NULL);
+	free(threads);
+}
 
-    return 0;
+int	main(int argc, char **argv)
+{
+	t_simulation	sim;	
+
+	parse_arguments(argc, argv, &sim);
+	sim.start_time = cur_time_ms();
+	init_forks(&sim);
+	init_philosophers(&sim);
+	if (sim.number_of_philosophers == 1)
+		handle_single_philosopher(&sim.philosophers[0]);
+	else
+		start_simulation(&sim);
+	cleanup_forks(&sim);
+	return (0);
 }
