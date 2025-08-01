@@ -26,6 +26,6 @@
 </picture>
 
 ### In Progress:
-> push_swap </br>
-> minitalk
+> cpp_modules </br>
+> whole common
 
