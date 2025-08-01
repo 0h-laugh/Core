@@ -17,21 +17,21 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 
 $(NAME): $(OBJS)
 	@echo ""
-	@echo " ✨  megaphone created  ✨"
+	@echo " ✨  PhoneBook created  ✨"
 	@echo ""
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	@rm -f $(OBJS)
 	@echo ""
-	@echo "🗑️ deleted object files 🗑️"
+	@echo "🗑️ Deleted object files 🗑️"
 	@echo ""
 
 fclean:
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
 	@echo ""
-	@echo "🗑️ megaphone deleted 🗑️"
+	@echo "🗑️ PhoneBook deleted 🗑️"
 	@echo ""
 
 re: clean fclean all
