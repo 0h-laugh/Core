@@ -1,39 +1,22 @@
-CC = c++
+NAME = phonebook
+
+C = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = megaphone
 
-SRC_PATH = ./
-OBJ_PATH = ./
-
-SRC = megaphone.cpp
-SRCS = $(addprefix $(SRC_PATH), $(SRC))
-OBJ = $(SRC:.cpp=.o)
-OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
+SRCS = main.cpp Contact.cpp Phonebook.cpp
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 $(NAME): $(OBJS)
-	@echo ""
-	@echo " ✨  PhoneBook created  ✨"
-	@echo ""
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(C) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	@rm -f $(OBJS)
-	@echo ""
-	@echo "🗑️ Deleted object files 🗑️"
-	@echo ""
+	rm -f $(OBJS)
 
-fclean:
-	@rm -f $(OBJS)
-	@rm -f $(NAME)
-	@echo ""
-	@echo "🗑️ PhoneBook deleted 🗑️"
-	@echo ""
+fclean: clean
+	rm -f $(NAME)
 
-re: clean fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

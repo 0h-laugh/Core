@@ -1,39 +1,22 @@
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = megaphone
 
-SRC_PATH = ./
-OBJ_PATH = ./
+C = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = megaphone.cpp
-SRCS = $(addprefix $(SRC_PATH), $(SRC))
-OBJ = $(SRC:.cpp=.o)
-OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS)
-	@echo ""
-	@echo " ✨  megaphone created  ✨"
-	@echo ""
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(SRC)
+	$(C) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	@rm -f $(OBJS)
-	@echo ""
-	@echo "🗑️ deleted object files 🗑️"
-	@echo ""
+	rm -f $(OBJS)
 
-fclean:
-	@rm -f $(OBJS)
-	@rm -f $(NAME)
-	@echo ""
-	@echo "🗑️ megaphone deleted 🗑️"
-	@echo ""
+fclean: clean
+	rm -f $(NAME)
 
-re: clean fclean all
+re: clean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean re
